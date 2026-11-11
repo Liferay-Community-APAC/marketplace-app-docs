@@ -51,6 +51,10 @@ Give it a password nobody uses, since OAuth doesn't need one, and make sure it i
 1. Assign the regular role to the user.
 1. Make the user a member of each site the server should work in, and give it the site role there. If it should review content in a workflow, also give it **Site Content Reviewer** in those sites.
 
+The user's *Roles* page then shows the regular role, and the site roles in each site:
+
+![The service user's Roles page: the regular role MCP OAuth Client, and the site roles MCP Content Editor and Site Content Reviewer in the MCP Demo site.](../assets/images/service-user-roles.png){: .screenshot }
+
 {: .tip }
 For signed-in page inspection, also create a second, view-only user that is only a site member, with no roles. Without it, the page inspection tools view pages as a guest.
 

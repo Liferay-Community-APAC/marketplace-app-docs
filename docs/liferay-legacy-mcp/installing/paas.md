@@ -10,7 +10,7 @@ nav_order: 4
 On Liferay PaaS, you add the OAuth 2 client extension to your PaaS project's repository, and deploy it with the rest of the project. The server then runs outside Liferay Cloud, on each person's computer or on a server of yours, with the application's credentials copied from Liferay.
 
 {: .warning }
-These steps haven't been tested on a Liferay PaaS environment yet. Running the server as a service inside Liferay Cloud isn't covered.
+These steps haven't been tested on a Liferay PaaS environment yet; the credentials files of Step 3 and the server were checked against Liferay DXP 2025.Q1.29. Running the server as a service inside Liferay Cloud isn't covered.
 
 1. TOC
 {:toc}
@@ -54,16 +54,28 @@ With `LIFERAY_URL` set to your environment's Liferay address, for example `https
 
 ## Without a Client Extension
 
-If you can't deploy client extensions, create the application in the Control Panel instead. In *Control Panel* → *Security* → *OAuth 2 Administration*, add an application:
+If you can't deploy client extensions, create the application in the Control Panel instead:
 
-| Field | Value |
-| --- | --- |
-| Name | `Liferay MCP server` |
-| Client Profile | Headless Server |
-| Allowed Authorization Types | Client Credentials only |
-| Client Credentials User | The service user |
+1. In *Control Panel* → *Security* → *OAuth 2 Administration*, click **New**, and fill in:
 
-Save it, select the scopes listed in the [client extension file](../assets/downloads/liferay-mcp-oauth.client-extension.yaml) on its **Scopes** tab, and save again. Then write the routes folder as in Step 3, with its Client ID and Client Secret.
+    | Field | Value |
+    | --- | --- |
+    | Name | `Liferay MCP server` |
+    | Client Profile | **Headless Server** |
+    | Allowed Authorization Types | **Client Credentials** only: clear **JWT_BEARER** |
+    | Client Credentials User | Click **Select**, and choose the service user |
+
+    Leave **Callback URIs** empty: a Headless Server doesn't need one.
+
+1. Click **Save**. The application's **Credentials** tab then shows its **Client ID** and **Client Secret**:
+
+    ![The Liferay MCP server application made in the Control Panel: Client ID and Client Secret at the top (blanked here), Client Profile Headless Server, Client Credentials allowed, and mcp-service as the Client Credentials User.](../assets/images/oauth-cp-app.png){: .screenshot }
+
+1. On its **Scopes** tab, select the scopes listed in the [client extension file](../assets/downloads/liferay-mcp-oauth.client-extension.yaml), and click **Save**.
+1. Write the routes folder as in [Step 3](#step-3-copy-the-credentials-for-the-server), with its Client ID and Client Secret.
+
+{: .note }
+Checked on Liferay DXP 2025.Q1.29: an application made this way, with the four files written by hand and `LIFERAY_URL` set, connected the server with OAuth 2 and all nine scopes, and its searches returned the site's content.
 
 ## Related Information
 

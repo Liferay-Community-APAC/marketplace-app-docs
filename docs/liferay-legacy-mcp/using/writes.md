@@ -28,6 +28,10 @@ Deletes, batches of changes and permission changes also need `MCP_DESTRUCTIVE_WR
 
 With `confirm`, the first call to a write tool returns a **preview**: the item before and after, and the exact request to Liferay. Nothing changes yet. The AI assistant shows it to you, and only when you agree does it call the tool again to confirm.
 
+For example, Claude Code asked for a draft article shows what it would create, and asks before it creates it:
+
+![Claude Code showing the preview of a draft article, Q4 Webinar, with its summary and body, saying nothing has been created yet, and asking whether to create it.](../assets/images/claude-code-write-preview.png){: .screenshot }
+
 A confirmation works once, and only for that exact change. If the item was edited in the meantime, or the server restarted, it no longer works, and the assistant asks for a fresh preview.
 
 ## Publishing and Review

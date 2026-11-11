@@ -82,7 +82,7 @@ The server's container joins Liferay's network (`--network container:liferay`), 
 - **On another computer:** copy the credentials out with `docker cp liferay:/opt/liferay/routes/default/liferay-mcp-oauth .`, give them to the person securely, and set `LIFERAY_URL` to your Liferay's address.
 
 {: .note }
-Checked on Liferay DXP 2025.Q1.29 in Docker: the zip created the application and its credentials within seconds, and the server, in a container sharing Liferay's network, connected with OAuth 2 and all nine scopes, started by Claude Code. The shared HTTPS server wasn't run in this setup.
+Checked on Liferay DXP 2025.Q1.29 in Docker: the zip created the application and its credentials within seconds, and the server, in a container sharing Liferay's network, connected with OAuth 2 and all nine scopes, both started by Claude Code and as the shared HTTPS server. Reached at the Liferay container's network address, as a published port is, the HTTPS server refused a request without a key or with a wrong one (401), and answered one with a key made as in [For Services and People](http.html#step-2-give-services-api-keys).
 
 ## Day to Day
 

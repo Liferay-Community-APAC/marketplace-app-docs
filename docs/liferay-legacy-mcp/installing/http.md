@@ -42,7 +42,7 @@ echo "Give the caller this key, once: $KEY"
 echo "reporting:read:$(printf '%s' "$KEY" | openssl dgst -sha256 | awk '{print $NF}')" >> /srv/liferay-mcp/secrets/api-keys
 ```
 
-Replace `reporting` with the service's name, and `read` with `write` for a service that may write. Callers send `Authorization: Bearer <key>`. To revoke a key, remove its line and restart the server.
+Replace `reporting` with the service's name, and `read` with `write` for a service that may write. Keep the keys file readable only by the server, as user ID 1000 in the container. Callers send `Authorization: Bearer <key>`. To revoke a key, remove its line and restart the server.
 
 {: .note }
 Over HTTPS, writes stay off even for `write` keys, unless you also set `MCP_WRITE_MODE=confirm` and `MCP_HTTP_WRITES=true`. Nobody sees a service's preview, so turn this on only for an unattended job you trust.
