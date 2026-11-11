@@ -25,16 +25,16 @@ An AI assistant then reaches the server in one of two ways:
 
 | Who | How | Page |
 | --- | --- | --- |
-| One person, in a desktop AI assistant, an IDE or Claude Code | The assistant starts the server on their computer (stdio) | [For One Person](installing/stdio.html), [With Claude Code](installing/claude-code.html) |
+| One person, in Claude Code, the Claude desktop app, or another AI assistant | The assistant starts the server on their computer (stdio) | [With Claude Code](installing/claude-code.html), [With the Claude Desktop App](installing/claude-desktop.html), [Other AI Assistants](installing/stdio.html) |
 | Services, and people who sign in with Liferay | Over HTTPS, with API keys or Liferay sign-in | [For Services and People](installing/http.html) |
 
 ## Try It
 
 The quickest way to see it work is one person, with a desktop AI assistant, on a test copy of your Liferay:
 
-1. [Create the service user and its roles](installing/liferay-setup.html#step-1-create-the-service-user-and-its-roles).
-1. [Create the OAuth 2 connection](installing/liferay-setup.html#step-2-create-the-oauth-2-connection), and save its credentials in a routes folder.
-1. [Add the server to your AI assistant](installing/stdio.html), and restart the assistant, or [add it to Claude Code](installing/claude-code.html).
+1. [Create the service user](installing/liferay-setup.html).
+1. Deploy the OAuth 2 client extension, and copy its credentials, as on [Tomcat](installing/tomcat.html), [Docker](installing/docker.html) or [PaaS](installing/paas.html).
+1. [Add the server to Claude Code](installing/claude-code.html), or to [another AI assistant](installing/stdio.html).
 1. Ask: *"What Liferay server are you connected to?"* The assistant calls `get_server_info`, which names your Liferay's release, the connection, and which tools your Liferay supports.
 
 Then try a few questions from [What to Ask](using/what-to-ask.html), such as *"Find articles in my-site that haven't been modified in six months."*

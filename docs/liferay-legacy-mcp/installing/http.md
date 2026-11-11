@@ -1,7 +1,7 @@
 ---
 title: For Services and People
 parent: Installing
-nav_order: 4
+nav_order: 8
 ---
 
 # For Services and People (HTTPS)
@@ -14,7 +14,7 @@ Over HTTPS, one server is shared: services call it with API keys, and people sig
 
 ## Step 1: Start the Server
 
-Run the server next to Liferay, behind a reverse proxy or load balancer that terminates TLS at an `https` address, for example `https://mcp.example.com`, and forwards to port 3333:
+Run the server next to Liferay, as in the page for where your Liferay runs ([Tomcat](tomcat.html), [Docker](docker.html), [PaaS](paas.html)), behind a reverse proxy or load balancer that terminates TLS at an `https` address, for example `https://mcp.example.com`, and forwards to port 3333:
 
 ```bash
 docker run -d --name liferay-mcp --restart unless-stopped -p 127.0.0.1:3333:3333 \
@@ -23,7 +23,6 @@ docker run -d --name liferay-mcp --restart unless-stopped -p 127.0.0.1:3333:3333
   -v liferay-mcp-data:/data \
   -e LIFERAY_URL=https://liferay.example.com \
   -e LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth \
-  -e LIFERAY_ROUTES_DXP=/run/liferay-routes/dxp \
   -e MCP_HTTP_HOST=0.0.0.0 \
   -e MCP_PUBLIC_URL=https://mcp.example.com \
   -e MCP_TRUST_PROXY=private \

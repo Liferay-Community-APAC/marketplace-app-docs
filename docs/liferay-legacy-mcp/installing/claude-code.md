@@ -1,16 +1,16 @@
 ---
 title: With Claude Code
 parent: Installing
-nav_order: 3
+nav_order: 5
 ---
 
 # With Claude Code
 {: .no_toc }
 
-[Claude Code](https://claude.com/claude-code) adds MCP servers with one command, `claude mcp add`, and starts them itself, so each person runs their own copy of the server, as in [For One Person](stdio.html).
+[Claude Code](https://claude.com/claude-code) adds MCP servers with one command, `claude mcp add`, and starts them itself, so each person runs their own copy of the server on their computer.
 
 {: .important }
-You need Docker, Claude Code, and a copy of the [routes folder](liferay-setup.html#step-3-save-the-credentials-for-the-server) on your computer, readable only by you.
+You need Docker, Claude Code, and a copy of the server's credentials on your computer, as in the page for where your Liferay runs ([Tomcat](tomcat.html), [Docker](docker.html), [PaaS](paas.html)), readable only by you.
 
 1. TOC
 {:toc}
@@ -25,14 +25,13 @@ claude mcp add liferay -- docker run -i --rm \
   -v liferay-mcp-data:/data \
   -e LIFERAY_URL=https://liferay.example.com \
   -e LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth \
-  -e LIFERAY_ROUTES_DXP=/run/liferay-routes/dxp \
   -e LIFERAY_DEFAULT_SITE=my-site \
   ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.1.0-slim
 ```
 
-Everything after `--` is the command Claude Code runs to start the server. If you wrote the routes folder by hand, it has no `dxp` folder: leave out the `LIFERAY_ROUTES_DXP` line.
+Everything after `--` is the command Claude Code runs to start the server. `~/liferay-mcp/routes` is the folder that holds the `liferay-mcp-oauth` folder.
 
-By default, the server is added for the current folder only, and only for you. Add `-s user` after `add` to use it in every folder, or `-s project` to share it with your team in the folder's `.mcp.json`; teammates then approve it the first time they start Claude Code there, and need their own routes folder.
+By default, the server is added for the current folder only, and only for you. Add `-s user` after `add` to use it in every folder, or `-s project` to share it with your team in the folder's `.mcp.json`; to use it in the Claude desktop app's Code tab, see [With the Claude Desktop App](claude-desktop.html); teammates then approve it the first time they start Claude Code there, and need their own routes folder.
 
 ## Step 2: Check That It Connects
 
@@ -72,5 +71,5 @@ Each write is then shown as a preview in Claude Code, and runs only once you con
 ## Related Information
 
 - [What to Ask](../using/what-to-ask.html)
-- [For One Person](stdio.html)
+- [With the Claude Desktop App](claude-desktop.html)
 - [Checking the Installation](checking.html)

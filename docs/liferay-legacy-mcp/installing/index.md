@@ -28,7 +28,7 @@ Check that you have:
 | Piece | Where | What It Is |
 | --- | --- | --- |
 | A service user and two roles | Liferay | The Liferay user the server acts as, with least privilege. |
-| An OAuth 2 application | Liferay | The server's connection to Liferay, limited to the scopes the tools need. |
+| An OAuth 2 client extension | Liferay | [`liferay-mcp-oauth.zip`](../assets/downloads/liferay-mcp-oauth.zip): the server's connection to Liferay, an OAuth 2 application limited to the scopes the tools need. |
 | The server | A container | `ghcr.io/liferay-community-apac/liferay-legacy-mcp`, in two variants (below). |
 | A sign-in application (optional) | Liferay | Only for people who sign in over HTTPS. |
 
@@ -54,13 +54,27 @@ To pin an exact build, use its digest:
 
 ## Steps
 
-Start with the Liferay side, then choose how the server is used:
+### 1. Create the Service User
+
+Follow [Creating the Service User](liferay-setup.html), on every platform.
+
+### 2. Connect Liferay, Where It Runs
+
+Deploy the OAuth 2 connection, and get its credentials for the server:
 
 <div class="doc-cards">
-  <a class="card doc" href="liferay-setup.html"><strong>1. Setting Up Liferay</strong><span>The service user, its roles, and the OAuth 2 connection. Needed for every way of using the server.</span></a>
-  <a class="card doc" href="stdio.html"><strong>2a. For One Person</strong><span>A desktop AI assistant or IDE starts the server on the person's computer.</span></a>
-  <a class="card doc" href="claude-code.html"><strong>2b. With Claude Code</strong><span>The same, added with one <code>claude mcp add</code> command.</span></a>
-  <a class="card doc" href="http.html"><strong>2c. For Services and People</strong><span>The server runs over HTTPS, with API keys for services and Liferay sign-in for people.</span></a>
+  <a class="card doc" href="tomcat.html"><strong>Liferay Self-Hosted (Tomcat)</strong><span>Copy the client extension zip into Liferay, and run the server on the Liferay machine or people's computers.</span></a>
+  <a class="card doc" href="docker.html"><strong>Liferay Self-Hosted (Docker)</strong><span>Copy the zip into Liferay's container, and run the server in a container that shares Liferay's network.</span></a>
+  <a class="card doc" href="paas.html"><strong>Liferay PaaS</strong><span>Add the client extension to your PaaS project, and copy its credentials for the server.</span></a>
+</div>
+
+### 3. Connect the AI Assistant
+
+<div class="doc-cards">
+  <a class="card doc" href="claude-code.html"><strong>With Claude Code</strong><span>Add the server with one <code>claude mcp add</code> command, in a terminal.</span></a>
+  <a class="card doc" href="claude-desktop.html"><strong>With the Claude Desktop App</strong><span>Use the server in the desktop app's Code tab.</span></a>
+  <a class="card doc" href="stdio.html"><strong>Other AI Assistants</strong><span>Desktop AI assistants and IDEs that read an <code>mcpServers</code> setting.</span></a>
+  <a class="card doc" href="http.html"><strong>For Services and People</strong><span>One shared server over HTTPS, with API keys for services and Liferay sign-in for people.</span></a>
 </div>
 
 Then follow [Checking the Installation](checking.html).
