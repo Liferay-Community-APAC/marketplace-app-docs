@@ -9,7 +9,7 @@ nav_order: 2
 Liferay Legacy MCP is a server that speaks the Model Context Protocol (MCP), the standard way AI assistants call tools. Connected to your Liferay, it lets an AI assistant work with your sites and content. This page explains how it fits together, and the shortest way to try it.
 
 {: .warning }
-**A community app, for experimental use.** Liferay Legacy MCP is shared by Liferay Community APAC. It isn't a Liferay product: Liferay doesn't support it, and it comes as is, with no warranty and no support commitment. Use it to explore and evaluate on a test or development copy of your Liferay, not in production. AI assistants can misread a request, so start with writes off, and check every preview before you confirm it.
+**A community app, for experimental use.** Liferay Legacy MCP is shared by Liferay Community APAC. It isn't a Liferay product: Liferay doesn't support it, and it comes as is, with no warranty and no support commitment. Use it to explore and evaluate on a test or development copy of your Liferay, not in production. AI assistants can misread a request, so start with writes off, and check every preview before you confirm it. Running it still requires a Liferay DXP Enterprise Subscription.
 
 1. TOC
 {:toc}
