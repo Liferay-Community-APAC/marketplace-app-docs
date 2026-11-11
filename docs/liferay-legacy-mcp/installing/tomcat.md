@@ -64,6 +64,9 @@ Choose how people use it:
 
 - **On each person's computer.** Give each person a copy of the `liferay-mcp-oauth` folder, securely, and follow [With Claude Code](claude-code.html), [With the Claude Desktop App](claude-desktop.html), or [Other AI Assistants](stdio.html), with `LIFERAY_URL` set to your Liferay's address, such as `https://liferay.example.com`.
 
+{: .note }
+Checked on Liferay DXP 2025.Q1.29, whose Docker image runs this Tomcat bundle: the zip in `osgi/client-extensions` created the application and its credentials in `routes/default`, and the shared server above, with the host's network on Linux, connected to Liferay at `localhost` with OAuth 2, refused a request without a key (401), and answered one with a key.
+
 ## Related Information
 
 - [Checking the Installation](checking.html)

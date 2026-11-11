@@ -1,7 +1,7 @@
 ---
 title: Liferay Legacy MCP
 nav_order: 1
-footer_note: Liferay Legacy MCP is a Liferay Community APAC app for experimental use. It isn't supported by Liferay, and isn't meant for production.
+footer_note: Liferay Legacy MCP is available under Liferay's dual license, LGPL-2.1-or-later or the Liferay DXP EULA. Copyright &copy; 2026 Liferay, Inc. A Liferay Community APAC app for experimental use, not supported by Liferay, and not meant for production.
 description: Liferay Legacy MCP connects AI assistants to Liferay DXP 2024.Q1 to 2025.Q4, releases with no MCP support of their own.
 ---
 

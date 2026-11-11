@@ -15,6 +15,9 @@
 # Admin Content: drafts and article status. Admin Workflow: review tasks. Batch Engine: exports.
 # Admin Taxonomy and Form: the tags and categories, and forms areas of the generic API tools.
 #
+# .serviceAddress and .serviceScheme give the application its home page, the MCP server's own
+# address; Liferay requires one. They don't affect how the server connects.
+#
 # After changing it, deploy it again and restart the MCP server.
 assemble: []
 liferay-mcp-oauth-headless-server:
@@ -30,5 +33,7 @@ liferay-mcp-oauth-headless-server:
     - Liferay.Headless.Delivery.everything
     - Liferay.Headless.Form.everything
     - liferay-json-web-services.everything.read
+  .serviceAddress: localhost:3333
+  .serviceScheme: http
   type: oAuthApplicationHeadlessServer
   userAccountScreenName: mcp-service

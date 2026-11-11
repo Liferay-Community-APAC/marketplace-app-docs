@@ -65,7 +65,16 @@ The ready-made [`liferay-mcp-oauth.zip`](../assets/downloads/liferay-mcp-oauth.z
 - `userAccountScreenName`: another screen name.
 - `scopes`: change `Liferay.Headless.Delivery.everything` to `Liferay.Headless.Delivery.everything.read`, and the Admin Content, Admin Workflow and Batch Engine scopes to their `.read` versions, to make the server read-only. Liferay enforces it.
 
-Save it as `client-extension.yaml` in a folder of your workspace's `client-extensions` folder, for example `client-extensions/liferay-mcp-oauth/`, and build it with `blade gw build`; the zip is in that folder's `dist` folder.
+Save it as `client-extension.yaml` in a folder of your workspace's `client-extensions` folder, for example `client-extensions/liferay-mcp-oauth/`, and build it from that folder:
+
+```bash
+blade gw build
+```
+
+The zip is `dist/liferay-mcp-oauth.zip` in that folder. Keep the file's `.serviceAddress` and `.serviceScheme` lines: they give the application the home page Liferay requires, and without them Liferay refuses to create it.
+
+{: .note }
+Checked on Liferay DXP 2025.Q1.29: the zip built this way created the application and its credentials, and the server connected with them.
 
 ## Next Steps
 

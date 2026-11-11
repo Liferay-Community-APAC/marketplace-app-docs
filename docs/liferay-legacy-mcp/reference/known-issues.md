@@ -34,4 +34,5 @@ Sign-in sessions are kept in memory. After a restart, people sign in again.
 
 ## Related Information
 
+- [Reporting a Bug](reporting-a-bug.html)
 - [Compatibility](compatibility.html)
