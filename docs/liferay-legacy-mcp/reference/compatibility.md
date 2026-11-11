@@ -12,7 +12,7 @@ nav_order: 3
 
 ## Tested Releases
 
-Liferay Legacy MCP 1.1.0 was tested on the latest update of each quarterly release, and on 7.4 U92:
+Liferay Legacy MCP 1.1.0 supports Liferay DXP 7.4 U1–U92 and 2024.Q1 to 2025.Q4. It was tested on the latest update of each quarterly release, and on 7.4 U92:
 
 | Release | Tested Update | Connection |
 | --- | --- | --- |
@@ -24,7 +24,7 @@ Liferay Legacy MCP 1.1.0 was tested on the latest update of each quarterly relea
 | 2025.Q2 | 2025.Q2.12 | OAuth 2 or password |
 | 2025.Q3 | 2025.Q3.10 | OAuth 2 or password |
 | 2025.Q4 | 2025.Q4.12 | OAuth 2 or password |
-| 7.4 update releases | U92 | OAuth 2 or password |
+| 7.4 U1–U92 | U92 | OAuth 2 or password; before U92, password only |
 
 Another update of these releases is expected to work, but wasn't tested. The server says so, without refusing: `get_server_info` reports whether your update was among those tested.
 
