@@ -12,7 +12,7 @@ nav_order: 3
 
 ## Tested Releases
 
-Liferay Legacy MCP 1.1.0 supports Liferay DXP 7.4 U1–U92 and 2024.Q1 to 2025.Q4. It was tested on the latest update of each quarterly release, and on 7.4 U92:
+Liferay Legacy MCP 1.1.0 supports Liferay DXP 7.4 U1–U92 and 2024.Q1 to 2025.Q4, with a Liferay DXP Enterprise Subscription. It doesn't run with Liferay Portal Community Edition: by default (`MCP_REQUIRE_DXP=true`), the server refuses to start unless the Liferay it connects to is confirmed as Liferay DXP. It was tested on the latest update of each quarterly release, and on 7.4 U92:
 
 | Release | Tested Update | Connection |
 | --- | --- | --- |

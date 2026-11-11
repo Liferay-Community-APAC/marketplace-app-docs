@@ -18,7 +18,7 @@ Liferay Legacy MCP is a community app for experimental use, not supported by Lif
 
 Check that you have:
 
-- **Liferay DXP 7.4 U1–U92, or 2024.Q1 to 2025.Q4.** See [Compatibility](../reference/compatibility.html) for which connection each release supports.
+- **A Liferay DXP Enterprise Subscription,** for Liferay DXP 7.4 U1–U92, or 2024.Q1 to 2025.Q4. Liferay Legacy MCP is experimental and not supported by Liferay, but it runs only with Liferay DXP. See [Compatibility](../reference/compatibility.html) for which connection each release supports.
 - **An administrator account** on that Liferay, to create a user, roles and an OAuth 2 application.
 - **Docker,** or another way to run containers, where the server will run: the person's computer, or a server next to Liferay.
 - **A test or development copy** of your Liferay. Don't install it in production.
