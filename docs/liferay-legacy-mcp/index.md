@@ -23,6 +23,8 @@ An MCP server for Liferay DXP releases that don't have one: 7.4 U1–U92, and 20
 ## Highlights
 
 - **For releases with no MCP.** Liferay DXP 2026.Q1 and later can be reached by AI through Liferay's own features. This server brings the same to 7.4 U1–U92 and 2024.Q1 to 2025.Q4, without changing Liferay.
+- **Runs outside Liferay.** The server is a separate container that uses Liferay's public Headless and JSON web service APIs. Nothing is installed into Liferay's code, so a Liferay update doesn't need a new server version unless an API it uses changes, and tools whose APIs a release doesn't have show as unavailable.
+- **Only configuration in Liferay.** The OAuth 2 client extension creates an OAuth application and adds no code to Liferay, so it isn't tied to a Liferay version.
 - **Content tools.** Search, read, create and update web content, documents, blogs, categories and tags, navigation menus, knowledge base articles and translations, and run review workflows.
 - **Every API, when you need it.** Generic tools reach all of Liferay's Headless REST APIs and its JSON web services, so the AI assistant isn't limited to the dedicated tools.
 - **Safe writes.** Writes are off by default. When turned on, every change is shown as a preview, and runs only after it's confirmed. Deletes, batches and permission changes need their own setting. Every attempt is written to an audit log.
