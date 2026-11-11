@@ -1,0 +1,33 @@
+# Settings for the Marketplace App docs: one folder per app under docs/, published at
+# https://liferay-community-apac.github.io/marketplace-app-docs/<app>/
+app_name: Marketplace Apps
+description: User guides for Liferay Community APAC Marketplace Apps.
+baseurl: /marketplace-app-docs        # "/" + this repository's name
+
+# The site section the docs belong to: the menu highlights it, and the breadcrumbs link to it.
+section_id: marketplace-apps
+section_name: Marketplace Apps
+section_url: marketplace-apps/
+
+url: https://liferay-community-apac.github.io
+lang: en
+# The main site the header, footer, styles and search come from. Leave it empty on the live site;
+# set it to the full address (https://liferay-community-apac.github.io) to preview the docs on their own.
+main_site: ""
+
+plugins:
+  - jekyll-sitemap      # writes sitemap.xml; the main site lists it in robots.txt via data/apps.json
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+  syntax_highlighter_opts:
+    disable: true
+
+defaults:
+  - scope: { path: "" }
+    values: { layout: default }
+
+exclude: [README.md, Gemfile, Gemfile.lock, vendor]
