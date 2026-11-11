@@ -34,7 +34,7 @@ Everything after `--` is the command Claude Code runs to start the server. `~/li
 {: .tip }
 `liferay-legacy` is the server's name in Claude Code, and its tools are named after it, such as `mcp__liferay-legacy__search_content`. Keep it distinct from other Liferay connections: a server of the same name in another scope replaces this one. If you connect more than one Liferay, add one server for each, named after it, such as `liferay-legacy-prod` and `liferay-legacy-test`, so the assistant can tell which one it's working on.
 
-By default, the server is added for the current folder only, and only for you. Add `-s user` after `add` to use it in every folder, or `-s project` to share it with your team in the folder's `.mcp.json`; to use it in the Claude desktop app's Code tab, see [With the Claude Desktop App](claude-desktop.html); teammates then approve it the first time they start Claude Code there, and need their own routes folder.
+By default, the server is added for the current folder only, and only for you. Add `-s user` after `add` to use it in every folder. Add `-s project` instead to share it with your team in the folder's `.mcp.json`: teammates then approve it the first time they start Claude Code there, and need their own routes folder. To use it in the Claude desktop app's Code tab, see [With the Claude Desktop App](claude-desktop.html).
 
 ## Step 2: Check That It Connects
 
