@@ -63,11 +63,24 @@ These were asked with `claude -p`, which runs one question and prints the answer
 
 ## Step 4: Turn On Writes (Optional)
 
-Writes are off until you add `-e MCP_WRITE_MODE=confirm` before the image name. Remove the server and add it again with that line:
+Writes are off until the server runs with `MCP_WRITE_MODE=confirm`. Remove the server, and add it again with that setting before the image name:
 
 ```bash
 claude mcp remove liferay-legacy
 ```
+
+```bash
+claude mcp add liferay-legacy -- docker run -i --rm \
+  -v ~/liferay-mcp/routes:/run/liferay-routes:ro \
+  -v liferay-mcp-data:/data \
+  -e LIFERAY_URL=https://liferay.example.com \
+  -e LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth \
+  -e LIFERAY_DEFAULT_SITE=my-site \
+  -e MCP_WRITE_MODE=confirm \
+  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.1.0-slim
+```
+
+Start a new Claude Code session afterwards.
 
 Each write is then shown as a preview in Claude Code, and runs only once you confirm it. See [Writes and Previews](../using/writes.html).
 

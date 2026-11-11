@@ -30,7 +30,7 @@ Another update of these releases is expected to work, but wasn't tested. The ser
 
 ## 7.4 Update Releases Before U92
 
-The server works on every 7.4 update release, down to U1, with a **password connection** (`LIFERAY_USERNAME` and `LIFERAY_PASSWORD`). The OAuth 2 connection through a client extension doesn't: before U92, Liferay either can't create the application from the client extension, or doesn't publish its credentials.
+The server works on every 7.4 update release, down to U1, with a **password connection** (`LIFERAY_USERNAME` and `LIFERAY_PASSWORD`). The OAuth 2 connection through a client extension doesn't: before U92, Liferay either can't create the application from the client extension, or doesn't publish its credentials. To keep the password out of command lines and settings, see [The Password Connection](settings.html#the-password-connection).
 
 On the oldest updates, about 27 of the 37 tools are available. The others need Liferay APIs that didn't exist yet, and show as unavailable in `get_server_info`.
 

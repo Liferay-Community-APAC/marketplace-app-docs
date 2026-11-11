@@ -30,7 +30,7 @@ Add your own settings, such as the database, as usual. If your Liferay container
 
 ## Step 2: Deploy the OAuth 2 Client Extension
 
-1. Download [`liferay-mcp-oauth.zip`](../assets/downloads/liferay-mcp-oauth.zip), and copy it into the running container:
+1. Download [`liferay-mcp-oauth.zip`](../assets/downloads/liferay-mcp-oauth.zip), or, to keep the server read-only, [`liferay-mcp-oauth-read-only.zip`](../assets/downloads/liferay-mcp-oauth-read-only.zip) (see [Changing the Client Extension](liferay-setup.html#changing-the-client-extension)), and copy it into the running container. For the read-only one, use its name in the command:
 
     ```bash
     docker cp liferay-mcp-oauth.zip liferay:/opt/liferay/osgi/client-extensions/
@@ -55,7 +55,7 @@ The server's container joins Liferay's network (`--network container:liferay`), 
     ```bash
     docker run -d --name liferay-mcp --restart unless-stopped --network container:liferay \
       -v liferay-routes:/opt/liferay/routes:ro \
-      -v liferay-mcp-secrets:/run/mcp-secrets:ro \
+      -v /srv/liferay-mcp/secrets:/run/mcp-secrets:ro \
       -v liferay-mcp-data:/data \
       -e LIFERAY_URL=http://localhost:8080 \
       -e LIFERAY_ROUTES_CLIENT_EXTENSION=/opt/liferay/routes/default/liferay-mcp-oauth \
@@ -66,7 +66,7 @@ The server's container joins Liferay's network (`--network container:liferay`), 
       ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.1.0-slim --http
     ```
 
-    It's reachable at `127.0.0.1:3333` on the Docker host, through the port Liferay's container publishes. Put your HTTPS reverse proxy for `https://mcp.example.com` in front of it, and follow [For Services and People](http.html) for API keys and sign-in.
+    Create `/srv/liferay-mcp/secrets/api-keys` first, as in [Give Services API Keys](http.html#step-2-give-services-api-keys). The server is reachable at `127.0.0.1:3333` on the Docker host, through the port Liferay's container publishes. Put your HTTPS reverse proxy for `https://mcp.example.com` in front of it, and follow [For Services and People](http.html) for API keys and sign-in.
 
 - **For a person on the Docker host,** with Claude Code: the same container, started by Claude Code, as in [With Claude Code](claude-code.html):
 
@@ -87,7 +87,7 @@ Checked on Liferay DXP 2025.Q1.29 in Docker: the zip created the application and
 ## Day to Day
 
 - **After Liferay's container restarts,** restart the server's container too, since it shares Liferay's network: `docker restart liferay-mcp`.
-- **If you replace Liferay's container,** the client extension zip goes with it: copy it in again as in Step 2. The routes volume keeps the credentials, but Liferay issues new ones when the zip is deployed again, so restart the server afterwards.
+- **If you replace Liferay's container,** the client extension zip goes with it: copy it in again as in Step 2. The routes volume keeps the credentials, and deploying the zip again keeps the same ones. Restart the server afterwards, since it shares Liferay's network.
 
 ## Related Information
 

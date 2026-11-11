@@ -36,14 +36,14 @@ nav_order: 1
 | `list_taxonomy`, `create_category`, `tag_content` | Vocabularies, categories and tags. |
 | `list_navigation_menus`, `add_navigation_menu_item` | Navigation menus. |
 | `create_knowledge_base_article` | Knowledge base articles. |
-| `list_users` | Users. |
+| `list_users` | Users. Needs the administrator connection. |
 
 ## Any API
 
 | Tool | What It Does |
 | --- | --- |
 | `describe_api`, `read_api`, `write_api`, `delete_api` | Every Headless REST API in 28 areas: describe an area's operations, then call one. |
-| `describe_jsonws`, `read_jsonws`, `write_jsonws` | Every JSON web service method, for what the Headless APIs don't cover. |
+| `describe_jsonws`, `read_jsonws`, `write_jsonws` | Every JSON web service method, for what the Headless APIs don't cover. Need the administrator connection. |
 
 The assistant uses a dedicated tool first, then the Headless APIs, then JSON web services only when Headless has nothing for the task.
 
@@ -62,7 +62,7 @@ The assistant uses a dedicated tool first, then the Headless APIs, then JSON web
 | `create_object` | Defines and publishes a Liferay Object. |
 | `create_fragments`, `create_style_book` | Page fragments and a style book. |
 
-These need a second, administrator connection, and are available only to a person using the server on their own computer, never over HTTPS.
+These, `list_users` and the JSON web service tools need a second, administrator connection (the `liferay-mcp-builder` client extension, with `LIFERAY_ROUTES_BUILDER_EXTENSION`), and are available only to a person using the server on their own computer, never over HTTPS. Without it, `get_server_info` shows them as unavailable.
 
 ## Related Information
 

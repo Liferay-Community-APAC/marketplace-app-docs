@@ -60,10 +60,17 @@ For signed-in page inspection, also create a second, view-only user that is only
 
 ## Changing the Client Extension
 
-The ready-made [`liferay-mcp-oauth.zip`](../assets/downloads/liferay-mcp-oauth.zip) acts as `mcp-service`, and lets the server write. To change either, edit the [`client-extension.yaml`](../assets/downloads/liferay-mcp-oauth.client-extension.yaml) it's made from, and build your own zip with a Liferay Workspace:
+There are two ready-made zips. Both act as `mcp-service`:
+
+| Download | Scopes | Made From |
+| --- | --- | --- |
+| [`liferay-mcp-oauth.zip`](../assets/downloads/liferay-mcp-oauth.zip) | Allow writes. The server still writes nothing until you turn writes on with `MCP_WRITE_MODE=confirm`, and then only after each change is confirmed. | [`liferay-mcp-oauth.client-extension.yaml`](../assets/downloads/liferay-mcp-oauth.client-extension.yaml) |
+| [`liferay-mcp-oauth-read-only.zip`](../assets/downloads/liferay-mcp-oauth-read-only.zip) | Read-only: Liferay refuses every write, whatever the server's settings, and the server shows its write tools as unavailable. | [`liferay-mcp-oauth-read-only.client-extension.yaml`](../assets/downloads/liferay-mcp-oauth-read-only.client-extension.yaml) |
+
+Deploy one of them, not both: they create the same application. To use another screen name or other scopes, edit the `client-extension.yaml` the zip is made from, and build your own zip with a Liferay Workspace:
 
 - `userAccountScreenName`: another screen name.
-- `scopes`: change `Liferay.Headless.Delivery.everything` to `Liferay.Headless.Delivery.everything.read`, and the Admin Content, Admin Workflow and Batch Engine scopes to their `.read` versions, to make the server read-only. Liferay enforces it.
+- `scopes`: to make the server read-only, change all six write scopes to their `.read` versions: `Liferay.Headless.Delivery.everything`, `Liferay.Headless.Admin.Content.everything`, `Liferay.Headless.Admin.Taxonomy.everything`, `Liferay.Headless.Admin.Workflow.everything`, `Liferay.Headless.Batch.Engine.everything` and `Liferay.Headless.Form.everything`. Leaving any of them as is leaves its area writable: tags and categories, for example, with Admin Taxonomy.
 
 Save it as `client-extension.yaml` in a folder of your workspace's `client-extensions` folder, for example `client-extensions/liferay-mcp-oauth/`, and build it from that folder:
 
@@ -74,7 +81,7 @@ blade gw build
 The zip is `dist/liferay-mcp-oauth.zip` in that folder. Keep the file's `.serviceAddress` and `.serviceScheme` lines: they give the application the home page Liferay requires, and without them Liferay refuses to create it.
 
 {: .note }
-Checked on Liferay DXP 2025.Q1.29: the zip built this way created the application and its credentials, and the server connected with them.
+Checked on Liferay DXP 2025.Q1.29: the zip built this way created the application and its credentials, and the server connected with them. With the read-only scopes, Liferay refused a write in each of the six areas (403), reads still worked, and the server showed all 18 of its write tools as unavailable, even with `MCP_WRITE_MODE=confirm`.
 
 ## Next Steps
 
