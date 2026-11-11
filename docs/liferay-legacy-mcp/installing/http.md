@@ -14,7 +14,10 @@ Over HTTPS, one server is shared: services call it with API keys, and people sig
 
 ## Step 1: Start the Server
 
-Run the server next to Liferay, as in the page for where your Liferay runs ([Tomcat](tomcat.html), [Docker](docker.html), [PaaS](paas.html)), behind a reverse proxy or load balancer that terminates TLS at an `https` address, for example `https://mcp.example.com`, and forwards to port 3333:
+Run the server behind a reverse proxy or load balancer that terminates TLS at an `https` address, for example `https://mcp.example.com`, and forwards to port 3333:
+
+- **On the Liferay machine, with Liferay Self-Hosted:** use the shared server command on the [Tomcat](tomcat.html#step-3-run-the-server) or [Docker](docker.html#step-3-run-the-server) page. It reaches Liferay through the machine's or the container's network.
+- **On another machine,** for example with [Liferay PaaS](paas.html): use this command, with `LIFERAY_URL` set to Liferay's address and the routes folder you copied:
 
 ```bash
 docker run -d --name liferay-mcp --restart unless-stopped -p 127.0.0.1:3333:3333 \
@@ -56,7 +59,8 @@ Each service gets its own key, with `read` or `write` access. The keys file, `/s
     ```bash
     sudo chown -R 1000:1000 /srv/liferay-mcp/secrets && sudo chmod -R go-rwx /srv/liferay-mcp/secrets
     ```
- Callers send `Authorization: Bearer <key>`. To revoke a key, remove its line and restart the server.
+
+Callers send `Authorization: Bearer <key>`. To revoke a key, remove its line and restart the server.
 
 {: .note }
 Over HTTPS, writes stay off even for `write` keys, unless you also set `MCP_WRITE_MODE=confirm` and `MCP_HTTP_WRITES=true`. Nobody sees a service's preview, so turn this on only for an unattended job you trust.

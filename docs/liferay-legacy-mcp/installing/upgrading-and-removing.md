@@ -12,11 +12,21 @@ nav_order: 10
 
 ## Upgrading the Server
 
-Pull the new tag, and start the container again with the same volumes and settings:
+For a shared server over HTTPS:
 
-```bash
-docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:<new tag>
-```
+1. Pull the new tag:
+
+    ```bash
+    docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:<new tag>
+    ```
+
+1. Stop and remove the running container. Its `/data` volume, with the audit log, stays:
+
+    ```bash
+    docker stop liferay-mcp && docker rm liferay-mcp
+    ```
+
+1. Start it again with the same `docker run` command as before, with the new tag.
 
 For an AI assistant that starts the server itself, change the tag in its `mcpServers` setting, and restart the assistant.
 
