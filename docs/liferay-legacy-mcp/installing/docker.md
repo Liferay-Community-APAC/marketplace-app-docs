@@ -71,7 +71,7 @@ The server's container joins Liferay's network (`--network container:liferay`), 
 - **For a person on the Docker host,** with Claude Code: the same container, started by Claude Code, as in [With Claude Code](claude-code.html):
 
     ```bash
-    claude mcp add liferay -- docker run -i --rm --network container:liferay \
+    claude mcp add liferay-legacy -- docker run -i --rm --network container:liferay \
       -v liferay-routes:/opt/liferay/routes:ro \
       -e LIFERAY_URL=http://localhost:8080 \
       -e LIFERAY_ROUTES_CLIENT_EXTENSION=/opt/liferay/routes/default/liferay-mcp-oauth \

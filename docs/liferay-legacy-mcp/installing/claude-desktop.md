@@ -20,7 +20,7 @@ You need Docker, the Claude desktop app, the [Claude Code command line tool](htt
 In a terminal, add the server with `-s user`, so it's available in every folder you open in the Code tab:
 
 ```bash
-claude mcp add -s user liferay -- docker run -i --rm \
+claude mcp add -s user liferay-legacy -- docker run -i --rm \
   -v ~/liferay-mcp/routes:/run/liferay-routes:ro \
   -v liferay-mcp-data:/data \
   -e LIFERAY_URL=https://liferay.example.com \
@@ -29,14 +29,14 @@ claude mcp add -s user liferay -- docker run -i --rm \
   ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.1.0-slim
 ```
 
-To add it for one folder only, run the command without `-s user` in that folder.
+To add it for one folder only, run the command without `-s user` in that folder. To connect more than one Liferay, add one server for each, named after it, such as `liferay-legacy-prod` and `liferay-legacy-test`.
 
 {: .note }
 The app's **+** → **Connectors** menu adds Claude's own connectors, not local servers like this one. The chat's *Developer* settings (`claude_desktop_config.json`) apply to the Chat tab, not to Code sessions.
 
 ## Step 2: Start a Code Session
 
-In the desktop app, open the **Code** tab, and start a session in a folder. Type `/mcp` to see the server: it shows **liferay** as connected once the app could start it.
+In the desktop app, open the **Code** tab, and start a session in a folder. Type `/mcp` to see the server: it shows **liferay-legacy** as connected once the app could start it.
 
 ## Step 3: Ask
 
