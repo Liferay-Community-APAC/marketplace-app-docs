@@ -33,7 +33,7 @@ Ask *"Create a draft article in my-site titled MCP test."* The assistant shows a
 
 ### Every Call Fails With 403
 
-- The service user still has to verify its email or change its password. See [Step 1 of Setting Up Liferay](liferay-setup.html).
+- The service user still has to verify its email or change its password. See Steps 1 and 2 of [Creating the Service User](liferay-setup.html).
 - The service user doesn't have the **MCP OAuth Client** role, so Liferay won't issue it a token.
 
 ### The Server Reports `invalid_client`

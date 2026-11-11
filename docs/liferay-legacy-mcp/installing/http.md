@@ -34,15 +34,29 @@ The server refuses to start on an address other than loopback without an `https`
 
 ## Step 2: Give Services API Keys
 
-Each service gets its own key, with `read` or `write` access. The keys file holds only a hash of each key. To make a key and its line for the file:
+Each service gets its own key, with `read` or `write` access. The keys file, `/srv/liferay-mcp/secrets/api-keys`, holds only a hash of each key.
 
-```bash
-KEY="lmcp_$(openssl rand -base64 32 | tr '+/' '-_' | tr -d '=')"
-echo "Give the caller this key, once: $KEY"
-echo "reporting:read:$(printf '%s' "$KEY" | openssl dgst -sha256 | awk '{print $NF}')" >> /srv/liferay-mcp/secrets/api-keys
-```
+1. Create the secrets folder, once:
 
-Replace `reporting` with the service's name, and `read` with `write` for a service that may write. Keep the keys file readable only by the server, as user ID 1000 in the container. Callers send `Authorization: Bearer <key>`. To revoke a key, remove its line and restart the server.
+    ```bash
+    sudo mkdir -p /srv/liferay-mcp/secrets
+    ```
+
+1. Make a key, and add its line to the keys file. Replace `reporting` with the service's name, and `read` with `write` for a service that may write:
+
+    ```bash
+    KEY="lmcp_$(openssl rand -base64 32 | tr '+/' '-_' | tr -d '=')"
+    echo "Give the caller this key, once: $KEY"
+    echo "reporting:read:$(printf '%s' "$KEY" | openssl dgst -sha256 | awk '{print $NF}')" | sudo tee -a /srv/liferay-mcp/secrets/api-keys >/dev/null
+    unset KEY
+    ```
+
+1. Make the folder readable only by the server, which runs as user ID 1000 in the container:
+
+    ```bash
+    sudo chown -R 1000:1000 /srv/liferay-mcp/secrets && sudo chmod -R go-rwx /srv/liferay-mcp/secrets
+    ```
+ Callers send `Authorization: Bearer <key>`. To revoke a key, remove its line and restart the server.
 
 {: .note }
 Over HTTPS, writes stay off even for `write` keys, unless you also set `MCP_WRITE_MODE=confirm` and `MCP_HTTP_WRITES=true`. Nobody sees a service's preview, so turn this on only for an unattended job you trust.
@@ -62,7 +76,15 @@ Over HTTPS, writes stay off even for `write` keys, unless you also set `MCP_WRIT
 
 1. On its **Scopes** tab, select these read scopes, and save: `Liferay.Headless.Delivery.everything.read`, `Liferay.Headless.Admin.Content.everything.read`, `Liferay.Headless.Admin.User.everything.read`, `Liferay.Headless.Admin.Taxonomy.everything.read`, `Liferay.Headless.Admin.Workflow.everything.read`, `Liferay.Data.Engine.REST.everything.read`, `Liferay.Headless.Form.everything.read` and `liferay-json-web-services.everything.read`.
 1. Decide who may sign in: create a regular role, for example **MCP Sign-In User**. On the application's **Permissions**, give that role **View** and **Create Token**, and assign the role to the people who may use the server.
-1. Save the application's client secret in a file in `/srv/liferay-mcp/secrets/`, and add to the `docker run` command:
+1. Save the application's client secret in a file. This asks for it without showing it, and keeps it out of your shell history:
+
+    ```bash
+    printf 'Client secret: '; read -rs SECRET; echo
+    printf '%s' "$SECRET" | sudo tee /srv/liferay-mcp/secrets/sign-in-secret >/dev/null; unset SECRET
+    sudo chown 1000:1000 /srv/liferay-mcp/secrets/sign-in-secret && sudo chmod 600 /srv/liferay-mcp/secrets/sign-in-secret
+    ```
+
+1. Add to the `docker run` command:
 
     ```bash
     -e LIFERAY_SIGN_IN_CLIENT_ID=<the application's client ID> \

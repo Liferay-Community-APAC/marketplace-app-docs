@@ -21,7 +21,7 @@ Follow Liferay's [Configuring Liferay PaaS for Client Extensions](https://learn.
 
 ## Step 2: Add the Client Extension
 
-1. Download [`client-extension.yaml`](../assets/downloads/liferay-mcp-oauth.client-extension.yaml), and check its `userAccountScreenName` and `scopes`, as in [Changing the Client Extension](liferay-setup.html#changing-the-client-extension).
+1. Download [`client-extension.yaml`](../assets/downloads/liferay-mcp-oauth.client-extension.yaml), or its read-only version, [`liferay-mcp-oauth-read-only.client-extension.yaml`](../assets/downloads/liferay-mcp-oauth-read-only.client-extension.yaml), and check its `userAccountScreenName` and `scopes`, as in [Changing the Client Extension](liferay-setup.html#changing-the-client-extension).
 1. Save it as `liferay/client-extensions/liferay-mcp-oauth/client-extension.yaml` in your PaaS project's repository.
 1. Push the project. In the Liferay Cloud console, open **Builds**, and on the new build choose **Deploy Build to...**, then your environment.
 
@@ -45,7 +45,7 @@ The server isn't in Liferay Cloud, so it can't read Liferay's routes. Write them
 Copy the scopes file too: without it, the server treats the connection as read-only.
 
 {: .warning }
-The folder holds the application's client secret. Keep it readable only by the server, like any password. Liferay issues new credentials if the client extension is deployed again with changes, so copy them again then.
+The folder holds the application's client secret. Keep it readable only by the server, like any password. On Liferay Self-Hosted, deploying the client extension again keeps the same credentials. On Liferay PaaS this hasn't been checked: after a deploy, if the server reports `invalid_client`, copy the Client ID and Client Secret again.
 
 ## Step 4: Run the Server
 

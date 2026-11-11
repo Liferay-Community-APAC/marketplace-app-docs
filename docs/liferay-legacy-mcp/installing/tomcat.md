@@ -17,7 +17,7 @@ You need file access to the Liferay server, the [service user](liferay-setup.htm
 
 ## Step 1: Deploy the OAuth 2 Client Extension
 
-1. Download [`liferay-mcp-oauth.zip`](../assets/downloads/liferay-mcp-oauth.zip).
+1. Download [`liferay-mcp-oauth.zip`](../assets/downloads/liferay-mcp-oauth.zip), or, to keep the server read-only, [`liferay-mcp-oauth-read-only.zip`](../assets/downloads/liferay-mcp-oauth-read-only.zip). See [Changing the Client Extension](liferay-setup.html#changing-the-client-extension).
 1. Copy it into `<liferay-home>/osgi/client-extensions`.
 1. Wait until the Liferay log shows `STARTED liferay-mcp-oauth`.
 
@@ -40,7 +40,7 @@ sudo chown -R 1000:1000 /srv/liferay-mcp/routes && sudo chmod -R go-rwx /srv/lif
 ```
 
 {: .warning }
-The folder holds the application's client secret. Keep it readable only by the server, like any password. Copy it again if you deploy the client extension again, since Liferay then issues new credentials.
+The folder holds the application's client secret. Keep it readable only by the server, like any password. Deploying the client extension again, even changed, keeps the same credentials; copy the folder again only if the application was deleted and created anew, when the server reports `invalid_client`.
 
 ## Step 3: Run the Server
 
