@@ -1,0 +1,19 @@
+{%- comment -%}
+  Forwards to another address: the page's redirect_to, under the main site.
+{%- endcomment -%}
+{%- assign main = site.main_site | default: "" -%}
+{%- assign target = main | append: page.redirect_to -%}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }} · Liferay Community APAC</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ site.url }}{{ page.redirect_to }}">
+  <meta http-equiv="refresh" content="0; url={{ target }}">
+  <script>location.replace({{ target | jsonify }} + location.hash);</script>
+</head>
+<body>
+  <p>The Marketplace Apps are listed on <a href="{{ target }}">Marketplace Apps</a>.</p>
+</body>
+</html>
