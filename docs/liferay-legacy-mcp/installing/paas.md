@@ -10,7 +10,7 @@ nav_order: 4
 On Liferay PaaS, you add the OAuth 2 client extension to your PaaS project's repository, and deploy it with the rest of the project. The server then runs outside Liferay Cloud, on each person's computer or on a server of yours, with the application's credentials copied from Liferay.
 
 {: .warning }
-These steps haven't been tested on a Liferay PaaS environment yet. The client extension's Liferay Workspace build, the credentials files of Step 3 and the server were checked against Liferay DXP 2025.Q1.29. Running the server as a service inside Liferay Cloud isn't covered.
+These steps haven't been run on a Liferay PaaS environment yet. They were checked with a PaaS project's Liferay Workspace locally, as described [below](#how-this-was-checked). Running the server as a service inside Liferay Cloud isn't covered.
 
 1. TOC
 {:toc}
@@ -25,7 +25,7 @@ Follow Liferay's [Configuring Liferay PaaS for Client Extensions](https://learn.
 1. Save it as `liferay/client-extensions/liferay-mcp-oauth/client-extension.yaml` in your PaaS project's repository.
 1. Push the project. In the Liferay Cloud console, open **Builds**, and on the new build choose **Deploy Build to...**, then your environment.
 
-    The build turns the folder into a zip with the client extension's configuration, plus a `Dockerfile` and an `LCP.json` that make it a short-lived job, as for any client extension without a service of its own.
+    The build packs the folder into `liferay-mcp-oauth.zip`, and puts it in the Liferay service's image, in `osgi/client-extensions`. When the Liferay service starts, it creates the application and its credentials.
 
 When the deploy finishes, *Control Panel* → *Security* → *OAuth 2 Administration* shows the **Liferay MCP server** application:
 
@@ -78,6 +78,17 @@ If you can't deploy client extensions, create the application in the Control Pan
 
 {: .note }
 Checked on Liferay DXP 2025.Q1.29: an application made this way, with the four files written by hand and `LIFERAY_URL` set, connected the server with OAuth 2 and all nine scopes, and its searches returned the site's content.
+
+## How This Was Checked
+
+With the Liferay Workspace of a Liferay PaaS project (DXP 2025.Q1, Workspace plugin 12.1.10), the client extension added in `liferay/client-extensions/liferay-mcp-oauth/`:
+
+1. `blade gw build` built `liferay-mcp-oauth.zip`.
+1. The Workspace's `dockerDeploy` and `createDockerfile` tasks put it in the Liferay image, in `osgi/client-extensions`, as the PaaS build does.
+1. That image, started on Liferay DXP 2025.Q1.29, created the application and its credentials at startup.
+1. The server, with those credentials and `LIFERAY_URL`, connected with OAuth 2 and all nine scopes, and its searches returned the site's content.
+
+Not covered: the Liferay Cloud build pipeline and console themselves, and copying the credentials from *OAuth 2 Administration* on Liferay Cloud.
 
 ## Related Information
 
