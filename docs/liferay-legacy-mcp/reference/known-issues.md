@@ -26,11 +26,11 @@ To turn off a site's review workflow for web content, use *Site Settings* → *W
 
 ## People Signed In Over HTTPS Are Read-Only
 
-People who sign in with Liferay over HTTPS can read, but not write. Liferay AI Hub users write through approval links.
+People who sign in with Liferay over HTTPS can read, but not write.
 
-## A Restart Drops Approvals and Sign-Ins
+## A Restart Drops Sign-Ins
 
-Pending approval links and sign-in sessions are kept in memory. After a restart, people sign in again, and agents ask again for changes that weren't approved.
+Sign-in sessions are kept in memory. After a restart, people sign in again.
 
 ## Related Information
 

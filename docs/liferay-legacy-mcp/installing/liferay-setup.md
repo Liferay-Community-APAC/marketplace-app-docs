@@ -55,6 +55,12 @@ Download [`liferay-mcp-oauth.client-extension.yaml`](../assets/downloads/liferay
 
 Save it as `client-extension.yaml` in a folder of your Liferay Workspace's `client-extensions` folder, for example `client-extensions/liferay-mcp-oauth/`, and deploy it the way you deploy client extensions: `blade gw deploy` on Liferay Self-Hosted, or your build pipeline on Liferay PaaS and SaaS. Liferay creates the application, shown as **Liferay MCP server** in *Control Panel* → *Security* → *OAuth 2 Administration*, and publishes its credentials as routes.
 
+![OAuth 2 Administration listing the Liferay MCP server application, created by the client extension.](../assets/images/oauth2-applications.png){: .screenshot }
+
+Its **Scopes** tab shows the scopes from the file:
+
+![The Liferay MCP server application's Scopes tab, with the scopes from the client extension file checked.](../assets/images/oauth2-scopes.png){: .screenshot }
+
 ### In the Control Panel
 
 In *Control Panel* → *Security* → *OAuth 2 Administration*, add an application:
@@ -98,4 +104,3 @@ A password connection, with `LIFERAY_USERNAME` and `LIFERAY_PASSWORD` instead of
 
 - [For One Person](stdio.html)
 - [For Services and People](http.html)
-- [For Liferay AI Hub](ai-hub.html)

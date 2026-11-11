@@ -27,7 +27,7 @@ Check that you have:
 | A service user and two roles | Liferay | The Liferay user the server acts as, with least privilege. |
 | An OAuth 2 application | Liferay | The server's connection to Liferay, limited to the scopes the tools need. |
 | The server | A container | `ghcr.io/liferay-community-apac/liferay-legacy-mcp`, in two variants (below). |
-| Sign-in and approvals applications (optional) | Liferay | Only for people who sign in over HTTPS, and for Liferay AI Hub. |
+| A sign-in application (optional) | Liferay | Only for people who sign in over HTTPS. |
 
 ### The Images
 
@@ -56,8 +56,8 @@ Start with the Liferay side, then choose how the server is used:
 <div class="doc-cards">
   <a class="card doc" href="liferay-setup.html"><strong>1. Setting Up Liferay</strong><span>The service user, its roles, and the OAuth 2 connection. Needed for every way of using the server.</span></a>
   <a class="card doc" href="stdio.html"><strong>2a. For One Person</strong><span>A desktop AI assistant or IDE starts the server on the person's computer.</span></a>
-  <a class="card doc" href="http.html"><strong>2b. For Services and People</strong><span>The server runs over HTTPS, with API keys for services and Liferay sign-in for people.</span></a>
-  <a class="card doc" href="ai-hub.html"><strong>2c. For Liferay AI Hub</strong><span>AI Hub agents call the server for their signed-in user, and changes wait for that person's approval.</span></a>
+  <a class="card doc" href="claude-code.html"><strong>2b. With Claude Code</strong><span>The same, added with one <code>claude mcp add</code> command.</span></a>
+  <a class="card doc" href="http.html"><strong>2c. For Services and People</strong><span>The server runs over HTTPS, with API keys for services and Liferay sign-in for people.</span></a>
 </div>
 
 Then follow [Checking the Installation](checking.html).

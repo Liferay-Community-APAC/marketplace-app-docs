@@ -48,5 +48,5 @@ The assistant can also use any of Liferay's Headless REST APIs, and its JSON web
 
 ## Related Information
 
-- [Writes, Previews, and Approvals](writes.html)
+- [Writes and Previews](writes.html)
 - [Tools](../reference/tools.html)

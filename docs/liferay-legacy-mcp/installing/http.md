@@ -1,7 +1,7 @@
 ---
 title: For Services and People
 parent: Installing
-nav_order: 3
+nav_order: 4
 ---
 
 # For Services and People (HTTPS)
@@ -31,7 +31,7 @@ docker run -d --name liferay-mcp --restart unless-stopped -p 127.0.0.1:3333:3333
   ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.1.0-slim --http
 ```
 
-The server refuses to start on an address other than loopback without an `https` public address and at least one way to identify callers: API keys (Step 2), Liferay sign-in (Step 3), or [Liferay AI Hub](ai-hub.html).
+The server refuses to start on an address other than loopback without an `https` public address and at least one way to identify callers: API keys (Step 2) or Liferay sign-in (Step 3).
 
 ## Step 2: Give Services API Keys
 
@@ -74,6 +74,5 @@ People then add the server to their AI assistant as a remote MCP server at `http
 
 ## Related Information
 
-- [For Liferay AI Hub](ai-hub.html)
 - [Settings](../reference/settings.html)
 - [Checking the Installation](checking.html)

@@ -7,7 +7,7 @@ nav_order: 1
 # Tools
 {: .no_toc }
 
-The server offers 37 tools. `get_server_info` lists them with whether your Liferay supports each one: a tool whose Liferay API is missing on your release shows as unavailable, with the reason.
+`get_server_info` lists the server's tools with whether your Liferay supports each one: a tool whose Liferay API is missing on your release shows as unavailable, with the reason.
 
 1. TOC
 {:toc}
@@ -64,13 +64,7 @@ The assistant uses a dedicated tool first, then the Headless APIs, then JSON web
 
 These need a second, administrator connection, and are available only to a person using the server on their own computer, never over HTTPS.
 
-## Liferay AI Hub
-
-| Tool | What It Does |
-| --- | --- |
-| `check_approval` | Whether an approval link was approved, rejected or expired. |
-
 ## Related Information
 
-- [Writes, Previews, and Approvals](../using/writes.html)
+- [Writes and Previews](../using/writes.html)
 - [What to Ask](../using/what-to-ask.html)

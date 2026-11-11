@@ -17,7 +17,7 @@ You need Docker on the person's computer, and a copy of the [routes folder](life
 
 ## Step 1: Add the Server to the AI Assistant
 
-Most desktop AI assistants and IDEs read an `mcpServers` setting in this format. Add the server to it, with your Liferay's address, the routes folder, and the site to work in by default:
+Most desktop AI assistants and IDEs read an `mcpServers` setting in this format. For Claude Code, see [With Claude Code](claude-code.html). Add the server to it, with your Liferay's address, the routes folder, and the site to work in by default:
 
 ```json
 {
@@ -59,10 +59,11 @@ Writes are off until you add this line to the `args`, before the image name:
 "-e", "MCP_WRITE_MODE=confirm",
 ```
 
-Every write is then shown to the person as a preview, and runs only once they confirm it. See [Writes, Previews, and Approvals](../using/writes.html).
+Every write is then shown to the person as a preview, and runs only once they confirm it. See [Writes and Previews](../using/writes.html).
 
 ## Related Information
 
+- [With Claude Code](claude-code.html)
 - [What to Ask](../using/what-to-ask.html)
 - [Settings](../reference/settings.html)
 - [Checking the Installation](checking.html)

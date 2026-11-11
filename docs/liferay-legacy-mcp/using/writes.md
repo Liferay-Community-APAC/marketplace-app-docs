@@ -1,10 +1,10 @@
 ---
-title: Writes, Previews, and Approvals
+title: Writes and Previews
 parent: Using the Server
 nav_order: 2
 ---
 
-# Writes, Previews, and Approvals
+# Writes and Previews
 {: .no_toc }
 
 The server never changes anything without a person seeing the change first. This page explains the safeguards, from Liferay's own permissions to the audit log.
@@ -30,16 +30,6 @@ With `confirm`, the first call to a write tool returns a **preview**: the item b
 
 A confirmation works once, and only for that exact change. If the item was edited in the meantime, or the server restarted, it no longer works, and the assistant asks for a fresh preview.
 
-## Approval Links (Liferay AI Hub)
-
-AI Hub agents can't show you a preview to confirm, so their changes become **approval links**:
-
-1. The agent asks for a change, and gets a link instead of a result. Nothing has changed.
-1. You open the link, and sign in to your Liferay.
-1. The page shows a fresh preview of the change, with your permissions. **Approve** runs it as you; **Reject** drops it.
-
-Only the person who asked can approve. A link forwarded to someone else is refused. A link lasts 15 minutes.
-
 ## Publishing and Review
 
 A confirmed article change publishes it, unless the site has a review workflow for web content: then it's submitted for review. The result says which. Ask for a draft to save without publishing, and to publish it later.
@@ -50,5 +40,4 @@ Every write attempt, whether refused, previewed, run, or failed, is added to the
 
 ## Related Information
 
-- [For Liferay AI Hub](../installing/ai-hub.html)
 - [Settings](../reference/settings.html)
