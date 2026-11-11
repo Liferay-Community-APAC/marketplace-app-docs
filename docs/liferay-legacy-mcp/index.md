@@ -11,7 +11,7 @@ description: Liferay Legacy MCP connects AI assistants to Liferay DXP 7.4 U1–U
 An MCP server for Liferay DXP releases that don't have one: 7.4 U1–U92, and 2024.Q1 to 2025.Q4. AI assistants, such as desktop chat apps, IDEs and coding agents like Claude Code, can then find, read and change your Liferay's content in plain language, with Liferay's own permissions, and with a preview a person confirms before anything changes.
 
 {: .warning }
-**A community app, for experimental use.** Liferay Legacy MCP is shared by Liferay Community APAC. It isn't a Liferay product: Liferay doesn't support it, and it comes as is, with no warranty and no support commitment. Use it to explore and evaluate on a test or development copy of your Liferay, not in production. AI assistants can misread a request, so start with writes off, and check every preview before you confirm it.
+**A community app, for experimental use.** Liferay Legacy MCP is shared by Liferay Community APAC. It isn't a Liferay product: Liferay doesn't support it, and it comes as is, with no warranty and no support commitment. Use it to explore and evaluate on a test or development copy of your Liferay, not in production. AI assistants can misread a request, so start with writes off, and check every preview before you confirm it. Running it still requires a Liferay DXP Enterprise Subscription.
 
 <div class="doc-cards">
   <a class="card doc" href="getting-started.html"><strong>Getting Started</strong><span>What the server does, and the shortest way to try it with a desktop AI assistant.</span></a>
@@ -37,6 +37,9 @@ An MCP server for Liferay DXP releases that don't have one: 7.4 U1–U92, and 20
 | --- | --- |
 | 1.1.0 | 2024.Q1 to 2025.Q4, tested on the latest update of each quarter. |
 | 1.1.0 | 7.4 U1–U92: U92 tested, with OAuth 2 or a password; U1 to U91 with a [password connection](reference/compatibility.html#74-update-releases-before-u92) instead of OAuth 2. |
+
+{: .important }
+**A Liferay DXP Enterprise Subscription is required,** even though Liferay Legacy MCP is a community app for experimental use that Liferay doesn't support. It works only with Liferay DXP: by default, the server refuses to start unless the Liferay it connects to is Liferay DXP.
 
 The server is a container image, `ghcr.io/liferay-community-apac/liferay-legacy-mcp`, for `linux/amd64` and `linux/arm64`. To install it, follow [Installing](installing/).
 
