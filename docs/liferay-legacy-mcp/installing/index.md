@@ -8,6 +8,9 @@ nav_order: 3
 
 These pages set up Liferay Legacy MCP 1.1.0 against an existing Liferay DXP: first the Liferay side, then the server for the people or agents who will use it.
 
+{: .warning }
+Liferay Legacy MCP is a community app for experimental use, not supported by Liferay. Install it on a test or development copy of your Liferay, not in production.
+
 1. TOC
 {:toc}
 
@@ -18,7 +21,7 @@ Check that you have:
 - **Liferay DXP 2024.Q1 to 2025.Q4,** or a 7.4 update release. See [Compatibility](../reference/compatibility.html) for which connection each release supports.
 - **An administrator account** on that Liferay, to create a user, roles and an OAuth 2 application.
 - **Docker,** or another way to run containers, where the server will run: the person's computer, or a server next to Liferay.
-- **A non-production copy** of your Liferay to try it on first.
+- **A test or development copy** of your Liferay. Don't install it in production.
 
 ## What You'll Install
 
