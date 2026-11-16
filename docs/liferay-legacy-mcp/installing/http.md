@@ -30,7 +30,7 @@ docker run -d --name liferay-mcp --restart unless-stopped -p 127.0.0.1:3333:3333
   -e MCP_PUBLIC_URL=https://mcp.example.com \
   -e MCP_TRUST_PROXY=private \
   -e MCP_HTTP_API_KEYS_FILE=/run/mcp-secrets/api-keys \
-  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.1.0-slim --http
+  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.2.0-slim --http
 ```
 
 The server refuses to start on an address other than loopback without an `https` public address and at least one way to identify callers: API keys (Step 2) or Liferay sign-in (Step 3).
@@ -78,7 +78,7 @@ Over HTTPS, writes stay off even for `write` keys, unless you also set `MCP_WRIT
     | Allowed Authorization Types | Authorization Code and Refresh Token only |
     | Trusted Application | Off, so people see what they're allowing |
 
-1. On its **Scopes** tab, select these read scopes, and save: `Liferay.Headless.Delivery.everything.read`, `Liferay.Headless.Admin.Content.everything.read`, `Liferay.Headless.Admin.User.everything.read`, `Liferay.Headless.Admin.Taxonomy.everything.read`, `Liferay.Headless.Admin.Workflow.everything.read`, `Liferay.Data.Engine.REST.everything.read`, `Liferay.Headless.Form.everything.read` and `liferay-json-web-services.everything.read`.
+1. On its **Scopes** tab, select these read scopes, and save: `Liferay.Headless.Delivery.everything.read`, `Liferay.Headless.Admin.Content.everything.read`, `Liferay.Headless.Admin.User.everything.read`, `Liferay.Headless.Admin.Taxonomy.everything.read`, `Liferay.Headless.Admin.Workflow.everything.read`, `Liferay.Data.Engine.REST.everything.read`, `Liferay.Headless.Form.everything.read`, `Liferay.Object.Admin.REST.everything.read` and `liferay-json-web-services.everything.read`.
 1. Decide who may sign in: create a regular role, for example **MCP Sign-In User**. On the application's **Permissions**, give that role **View** and **Create Token**, and assign the role to the people who may use the server.
 1. Save the application's client secret in a file. This asks for it without showing it, and keeps it out of your shell history:
 

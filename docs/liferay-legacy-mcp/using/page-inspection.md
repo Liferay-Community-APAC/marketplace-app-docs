@@ -7,7 +7,7 @@ nav_order: 3
 # Inspecting Pages
 {: .no_toc }
 
-With the `1.1.0-full` image, the server opens your pages in a headless browser:
+With the `1.2.0-full` image, the server opens your pages in a headless browser:
 
 - `inspect_page` reports a page's title and description, its heading outline and heading issues, its links, images without a description (alt text), console errors and failed requests, and can check that its internal links work.
 - `take_screenshot` takes a screenshot, of the visible part or the whole page, at a width you choose.
