@@ -33,6 +33,8 @@ Liferay rejects any write request made with the token, whatever the user's own p
 - **No data leaves Liferay.** The app's code, fonts and styles are served by Liferay from the client extension. It calls only this instance's `/o/headless-*` and `/o/oauth2/*` endpoints, and has no telemetry. Export downloads files to the user's own browser.
 - **Auditable.** API calls are made as the signed-in user, so Liferay's logs attribute them to that user. Issued tokens are listed in *OAuth 2 Administration*.
 
+![OAuth 2 Administration: the read-only application, its client ID and the number of authorizations issued.](assets/images/oauth2-applications.png){: .screenshot }
+
 ## Personal Data
 
 Users & Access shows account names, email addresses, status and sign-in dates, which Liferay already shows administrators. Liferay's `lastLoginDate` is the sign-in before the latest one, so check an account before deactivating it. The user running the scan is never reported as dormant.
