@@ -45,14 +45,12 @@ Both run on `linux/amd64` and `linux/arm64`, as a non-root user, write only to `
 docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.2.0-slim
 ```
 
-<!-- TODO before publishing: the digests of the public 1.2.0 images, once they're pushed to ghcr.io/liferay-community-apac. -->
-
 To pin an exact build, use its digest:
 
 | Tag | Digest |
 | --- | --- |
-| `1.2.0-slim` | `sha256:PENDING` |
-| `1.2.0-full` | `sha256:PENDING` |
+| `1.2.0-slim` | `sha256:7c632d153e69e9da39b5aa2e3994d1fd262bcc636bbba773c4490af97c28ff2b` |
+| `1.2.0-full` | `sha256:f155b2d9fb8587a92a153a16bca645745bc8698db288a1cf3761acb66c7d2283` |
 
 ## Steps
 
