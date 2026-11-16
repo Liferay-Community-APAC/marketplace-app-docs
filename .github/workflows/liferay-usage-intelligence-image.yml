@@ -1,0 +1,56 @@
+# Publishes ghcr.io/liferay-community-apac/liferay-usage-intelligence:<version>
+# (and :latest) whenever a new liferay-usage-intelligence-<version>.zip is added
+# to docs/liferay-usage-intelligence/assets/downloads/ on main. The image holds
+# that zip, so it matches the guide's download exactly. Run it by hand from the
+# Actions tab to republish the newest zip.
+
+name: Liferay Usage Intelligence image
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/liferay-usage-intelligence/assets/downloads/*.zip'
+      - 'images/liferay-usage-intelligence/**'
+      - '.github/workflows/liferay-usage-intelligence-image.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: liferay-usage-intelligence-image
+  cancel-in-progress: false
+
+jobs:
+  image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find the newest zip
+        run: |
+          zip="$(ls docs/liferay-usage-intelligence/assets/downloads/liferay-usage-intelligence-*.zip | sort -V | tail -1)"
+          version="$(basename "$zip" .zip)"; version="${version#liferay-usage-intelligence-}"
+          if ! [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Couldn't read a version from $zip"; exit 1
+          fi
+          echo "ZIP=$zip" >> "$GITHUB_ENV"
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+          echo "IMAGE=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/liferay-usage-intelligence" >> "$GITHUB_ENV"
+
+      - name: Build and push
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp "$ZIP" images/liferay-usage-intelligence/liferay-usage-intelligence.zip
+          echo "$GH_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker build --build-arg VERSION="$VERSION" -t "$IMAGE:$VERSION" -t "$IMAGE:latest" images/liferay-usage-intelligence
+          docker push "$IMAGE:$VERSION"
+          docker push "$IMAGE:latest"
+          {
+            echo "Pushed \`$IMAGE:$VERSION\` and \`:latest\` from \`$ZIP\`"
+            echo "(SHA-256 $(sha256sum "$ZIP" | cut -d' ' -f1))."
+          } >> "$GITHUB_STEP_SUMMARY"

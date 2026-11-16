@@ -18,6 +18,7 @@ An app that has its own code repository can keep its docs there instead, started
 | `docs/_layouts/default.html` | The page layout. The sidebar and breadcrumbs cover the current app only. |
 | `docs/index.md` | Forwards `/marketplace-app-docs/` to the main site's Marketplace Apps page, which lists every app. |
 | `.github/workflows/pages.yml` | Publishes the docs with the shared workflow whenever `docs/` changes on `main`. |
+| `images/<app>/` | A container image for an app, where it has one. `images/liferay-usage-intelligence/` is published as `ghcr.io/liferay-community-apac/liferay-usage-intelligence` by `.github/workflows/liferay-usage-intelligence-image.yml` whenever a new zip is added to that app's `assets/downloads/`. |
 
 ## Add an app
 
