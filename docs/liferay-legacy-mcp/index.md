@@ -10,6 +10,8 @@ description: Liferay Legacy MCP connects AI assistants to Liferay DXP 7.4 U1–U
 
 An MCP server for Liferay DXP releases that don't have one: 7.4 U1–U92 and 2024.Q1 to 2025.Q4, and 2026.Q1 and 2026.Q2, where Liferay's own MCP server is a beta behind a feature flag. AI assistants, such as desktop chat apps, IDEs and coding agents like Claude Code, can then find, read and change your Liferay's content in plain language, with Liferay's own permissions, and with a preview a person confirms before anything changes.
 
+![Claude Code asked for the three most recently modified articles in a site, answering with a table of titles and modified dates read from Liferay.](assets/images/claude-code-search.png){: .screenshot }
+
 {: .warning }
 **A community app, for experimental use.** Liferay Legacy MCP is shared by Liferay Community APAC. It isn't a Liferay product: Liferay doesn't support it, and it comes as is, with no warranty and no support commitment. Use it to explore and evaluate on a test or development copy of your Liferay, not in production. AI assistants can misread a request, so start with writes off, and check every preview before you confirm it. Running it still requires a Liferay DXP Enterprise Subscription.
 
@@ -30,6 +32,16 @@ An MCP server for Liferay DXP releases that don't have one: 7.4 U1–U92 and 202
 - **Safe writes.** Writes are off by default. When turned on, every change is shown as a preview, and runs only after it's confirmed. Deletes, batches and permission changes need their own setting. Every attempt is written to an audit log.
 - **Least privilege.** The server acts as one service user, through an OAuth 2 application whose scopes limit what it can reach. Liferay enforces both.
 - **Page inspection.** See a page's headings, links, missing image descriptions and errors, and take screenshots, as a guest or as a view-only user.
+
+## See It in Action
+
+Before anything changes, the AI assistant shows a preview of the change, and only makes it once you confirm:
+
+![Claude Code asked to create a draft article: it shows the article's title, summary and body as a preview, notes that nothing has been created yet, and asks before creating it.](assets/images/claude-code-write-preview.png){: .screenshot }
+
+In the Claude desktop app, the server's tools show under its name, and you choose which ones Claude may use without asking:
+
+![Claude desktop app settings for the liferay-legacy server: its read-only tools, such as Search web content, List pages and List documents, each set to need approval.](assets/images/claude-desktop-tool-permissions.png){: .screenshot }
 
 ## Supported Versions
 
