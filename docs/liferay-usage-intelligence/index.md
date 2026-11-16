@@ -19,6 +19,8 @@ A read-only health and upgrade-readiness dashboard that runs inside Liferay DXP.
   <a class="card doc" href="security.html"><strong>Security</strong><span>What the app can read, where data goes, and how to remove it.</span></a>
 </div>
 
+![The dashboard's overview after a scan: issues by severity, type and site, and the upgrade risk.](assets/images/overview.png){: .screenshot }
+
 ## Highlights
 
 - **Nothing to configure.** Deploying the zip creates a hidden page that only administrators can open, at `/web/usage-intelligence/dashboard`.

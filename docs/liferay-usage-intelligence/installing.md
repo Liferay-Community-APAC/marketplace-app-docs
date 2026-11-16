@@ -25,13 +25,17 @@ You need Liferay DXP 2024.Q1 to 2026.Q1 and an administrator account. The app sc
     https://<your-liferay>/web/usage-intelligence/dashboard
     ```
 
-1. Click **Run Scan**. **Settings → Test Connection** shows which user the app is connected as.
+1. Click **Run Scan**. **Settings → Test Connection** shows which user the app is connected as, and the Liferay release it detected:
+
+    ![Settings after Test Connection: connected as the signed-in user, with a read-only OAuth token, on Liferay DXP 2025.Q3.10.](assets/images/settings.png){: .screenshot }
 
 Deploying the zip creates:
 
 - **A client extension** with the dashboard, under *Applications* → *Client Extensions*.
 - **An OAuth 2 application**, *Liferay Usage Intelligence (read-only)*, in *Control Panel* → *Security* → *OAuth 2 Administration*.
 - **A site called Usage Intelligence** with one hidden page holding the dashboard. Its membership is private, and Guest and Site Member can't view the page, so visitors get *Not Found*. To let another role in, give it **View** on the page.
+
+![OAuth 2 Administration listing Liferay Usage Intelligence (read-only), the application the client extension creates.](assets/images/oauth2-applications.png){: .screenshot }
 
 The page is created in the default virtual instance. For other virtual instances, add the **Liferay Usage Intelligence** widget (*Client Extensions* category) to an administrator-only page.
 
