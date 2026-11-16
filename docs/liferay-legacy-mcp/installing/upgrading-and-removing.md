@@ -1,7 +1,7 @@
 ---
 title: Upgrading and Removing
 parent: Installing
-nav_order: 10
+nav_order: 12
 ---
 
 # Upgrading and Removing

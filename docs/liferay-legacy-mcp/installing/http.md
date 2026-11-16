@@ -1,7 +1,7 @@
 ---
 title: For Services and People
 parent: Installing
-nav_order: 8
+nav_order: 10
 ---
 
 # For Services and People (HTTPS)
