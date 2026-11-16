@@ -6,7 +6,7 @@ nav_order: 3
 # Installing
 {: .no_toc }
 
-These pages set up Liferay Legacy MCP 1.1.0 against an existing Liferay DXP: first the Liferay side, then the server for the people or agents who will use it.
+These pages set up Liferay Legacy MCP 1.2.0 against an existing Liferay DXP: first the Liferay side, then the server for the people or agents who will use it.
 
 {: .warning }
 Liferay Legacy MCP is a community app for experimental use, not supported by Liferay. Install it on a test or development copy of your Liferay, not in production.
@@ -18,7 +18,7 @@ Liferay Legacy MCP is a community app for experimental use, not supported by Lif
 
 Check that you have:
 
-- **A Liferay DXP Enterprise Subscription,** for Liferay DXP 7.4 U1–U92, or 2024.Q1 to 2025.Q4. Liferay Legacy MCP is experimental and not supported by Liferay, but it runs only with Liferay DXP. See [Compatibility](../reference/compatibility.html) for which connection each release supports.
+- **A Liferay DXP Enterprise Subscription,** for Liferay DXP 7.4 U1–U92, or 2024.Q1 to 2026.Q2. Liferay Legacy MCP is experimental and not supported by Liferay, but it runs only with Liferay DXP. See [Compatibility](../reference/compatibility.html) for which connection each release supports.
 - **An administrator account** on that Liferay, to create a user, roles and an OAuth 2 application.
 - **Docker,** or another way to run containers, where the server will run: the person's computer, or a server next to Liferay.
 - **A test or development copy** of your Liferay. Don't install it in production.
@@ -36,21 +36,21 @@ Check that you have:
 
 | Tag | Size | What It Includes |
 | --- | --- | --- |
-| `1.1.0-slim` | about 350 MB | Every tool except the page inspection tools, which show as unavailable. |
-| `1.1.0-full` | about 1.2 GB | Also `inspect_page` and `take_screenshot`, with a headless Chromium. |
+| `1.2.0-slim` | about 350 MB | Every tool except the page inspection tools, which show as unavailable. |
+| `1.2.0-full` | about 1.2 GB | Also `inspect_page` and `take_screenshot`, with a headless Chromium. |
 
 Both run on `linux/amd64` and `linux/arm64`, as a non-root user, write only to `/data`, and contain no credentials. The package is public:
 
 ```bash
-docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.1.0-slim
+docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.2.0-slim
 ```
 
 To pin an exact build, use its digest:
 
 | Tag | Digest |
 | --- | --- |
-| `1.1.0-slim` | `sha256:6c8f4457d3f7ad79c4d3f2a2f79e72449a9838c839dcf327370d0a3ff0316c13` |
-| `1.1.0-full` | `sha256:ed68f831c2a7be57c06520fda711c04982f702d76702ee91a95ce8db4c4e7195` |
+| `1.2.0-slim` | `sha256:7c632d153e69e9da39b5aa2e3994d1fd262bcc636bbba773c4490af97c28ff2b` |
+| `1.2.0-full` | `sha256:f155b2d9fb8587a92a153a16bca645745bc8698db288a1cf3761acb66c7d2283` |
 
 ## Steps
 

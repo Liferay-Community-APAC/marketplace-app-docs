@@ -25,7 +25,7 @@ nav_order: 1
 | `list_sites` | The sites the service user can see. |
 | `search_content` | Searches web content, with keywords, date ranges, sorting and paging. |
 | `get_content` | One article, with its structure's fields and its status. |
-| `list_pages` | A site's pages, with their full addresses. |
+| `list_pages` | A site's pages, with their full addresses, whether each is hidden from navigation, and its SEO title and description. |
 | `list_documents` | Documents, with their download addresses. |
 | `create_article`, `update_article`, `publish_article` | Create an article or a draft, change one, and publish a draft. |
 | `translate_article` | Adds a language to an article, leaving the others as they are. |
@@ -36,13 +36,13 @@ nav_order: 1
 | `list_taxonomy`, `create_category`, `tag_content` | Vocabularies, categories and tags. |
 | `list_navigation_menus`, `add_navigation_menu_item` | Navigation menus. |
 | `create_knowledge_base_article` | Knowledge base articles. |
-| `list_users` | Users. Needs the administrator connection. |
+| `list_users` | Users. Through the administrator connection when it's set up, otherwise as the service user, who sees only what it may view (below). |
 
 ## Any API
 
 | Tool | What It Does |
 | --- | --- |
-| `describe_api`, `read_api`, `write_api`, `delete_api` | Every Headless REST API in 28 areas: describe an area's operations, then call one. |
+| `describe_api`, `read_api`, `write_api`, `delete_api` | Every Headless REST API in 33 areas, including those new in 2026.Q1 and 2026.Q2: describe an area's operations, then call one. `read_api` also reads operations that answer with HTML. |
 | `describe_jsonws`, `read_jsonws`, `write_jsonws` | Every JSON web service method, for what the Headless APIs don't cover. Need the administrator connection. |
 
 The assistant uses a dedicated tool first, then the Headless APIs, then JSON web services only when Headless has nothing for the task.
@@ -51,8 +51,8 @@ The assistant uses a dedicated tool first, then the Headless APIs, then JSON web
 
 | Tool | What It Does |
 | --- | --- |
-| `inspect_page` | A page's outline, links, missing image descriptions and errors. `1.1.0-full` image only. |
-| `take_screenshot` | A screenshot of a page. `1.1.0-full` image only. |
+| `inspect_page` | A page's outline, links, missing image descriptions and errors. `1.2.0-full` image only. |
+| `take_screenshot` | A screenshot of a page. `1.2.0-full` image only. |
 
 ## Site Building (Administrator Connection)
 
@@ -62,7 +62,11 @@ The assistant uses a dedicated tool first, then the Headless APIs, then JSON web
 | `create_object` | Defines and publishes a Liferay Object. |
 | `create_fragments`, `create_style_book` | Page fragments and a style book. |
 
-These, `list_users` and the JSON web service tools need a second, administrator connection (the `liferay-mcp-builder` client extension, with `LIFERAY_ROUTES_BUILDER_EXTENSION`), and are available only to a person using the server on their own computer, never over HTTPS. Without it, `get_server_info` shows them as unavailable.
+These and the JSON web service tools need a second, administrator connection (the `liferay-mcp-builder` client extension, with `LIFERAY_ROUTES_BUILDER_EXTENSION`), and are available only to a person using the server on their own computer, never over HTTPS. Without it, `get_server_info` shows them as unavailable.
+
+## Users and Object Definitions Without the Administrator Connection
+
+Without the administrator connection, `list_users` and the objects API area read as the service user, so on a new installation they list only the service user and no object definitions. To list them all, give the service user's regular role **View** on users and on object definitions, at the instance's scope, in *Control Panel* → *Roles* (the resources `com.liferay.portal.kernel.model.User` and `com.liferay.object.model.ObjectDefinition`). Only do so if everyone using the server may see every user's name and email address.
 
 ## Related Information
 

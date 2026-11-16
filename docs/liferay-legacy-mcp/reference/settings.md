@@ -31,7 +31,7 @@ The server is set up with environment variables, passed with `-e` to `docker run
 
 ## Administrator Connection
 
-For `create_site`, `create_object`, the design tools, `list_users`, the administration API areas and the JSON web service tools, on a person's own computer only.
+For `create_site`, `create_object`, the design tools, the administration API areas and the JSON web service tools, on a person's own computer only. When it's set up, `list_users` and the objects API area use it too.
 
 | Setting | Meaning | Default |
 | --- | --- | --- |
@@ -59,7 +59,7 @@ For `create_site`, `create_object`, the design tools, `list_users`, the administ
 
 ## Page Inspection
 
-For `inspect_page` and `take_screenshot`, in the `1.1.0-full` image.
+For `inspect_page` and `take_screenshot`, in the `1.2.0-full` image.
 
 | Setting | Meaning | Default |
 | --- | --- | --- |

@@ -31,7 +31,7 @@ Most desktop AI assistants and IDEs read an `mcpServers` setting in this format.
         "-e", "LIFERAY_URL=https://liferay.example.com",
         "-e", "LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth",
         "-e", "LIFERAY_DEFAULT_SITE=my-site",
-        "ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.1.0-slim"
+        "ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.2.0-slim"
       ]
     }
   }
@@ -39,7 +39,7 @@ Most desktop AI assistants and IDEs read an `mcpServers` setting in this format.
 ```
 
 - `/path/to/routes` is the folder that holds the `liferay-mcp-oauth` folder.
-- For the page inspection tools, use the `1.1.0-full` image.
+- For the page inspection tools, use the `1.2.0-full` image.
 - `liferay-legacy` is the server's name in the assistant. To connect more than one Liferay, add one server for each, named after it, such as `liferay-legacy-prod` and `liferay-legacy-test`.
 - No password goes in this setting: the server reads the OAuth credentials from the routes folder when it starts.
 
