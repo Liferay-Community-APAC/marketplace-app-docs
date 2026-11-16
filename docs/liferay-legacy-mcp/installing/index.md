@@ -73,6 +73,8 @@ Deploy the OAuth 2 connection, and get its credentials for the server:
 <div class="doc-cards">
   <a class="card doc" href="claude-code.html"><strong>With Claude Code</strong><span>Add the server with one <code>claude mcp add</code> command, in a terminal.</span></a>
   <a class="card doc" href="claude-desktop.html"><strong>With the Claude Desktop App</strong><span>Use the server in the desktop app's chats and its Code tab.</span></a>
+  <a class="card doc" href="copilot.html"><strong>With GitHub Copilot</strong><span>Use the server in Visual Studio Code and the Copilot CLI, from one settings file.</span></a>
+  <a class="card doc" href="codex.html"><strong>With Codex</strong><span>Add the server with one <code>codex mcp add</code> command, for the Codex CLI and IDE extension.</span></a>
   <a class="card doc" href="stdio.html"><strong>Other AI Assistants</strong><span>Desktop AI assistants and IDEs that read an <code>mcpServers</code> setting.</span></a>
   <a class="card doc" href="http.html"><strong>For Services and People</strong><span>One shared server over HTTPS, with API keys for services and Liferay sign-in for people.</span></a>
 </div>

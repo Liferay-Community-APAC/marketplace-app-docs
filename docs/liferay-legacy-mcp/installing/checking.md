@@ -1,7 +1,7 @@
 ---
 title: Checking the Installation
 parent: Installing
-nav_order: 9
+nav_order: 11
 ---
 
 # Checking the Installation

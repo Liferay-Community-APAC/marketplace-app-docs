@@ -1,13 +1,13 @@
 ---
 title: Other AI Assistants
 parent: Installing
-nav_order: 7
+nav_order: 9
 ---
 
 # Other AI Assistants
 {: .no_toc }
 
-Desktop AI assistants and IDEs start an MCP server themselves, on the person's computer, and talk to it over its standard input and output (stdio). Each person runs their own copy of the server, on their computer. For Claude, see [With Claude Code](claude-code.html) and [With the Claude Desktop App](claude-desktop.html).
+Desktop AI assistants and IDEs start an MCP server themselves, on the person's computer, and talk to it over its standard input and output (stdio). Each person runs their own copy of the server, on their computer. For Claude, see [With Claude Code](claude-code.html) and [With the Claude Desktop App](claude-desktop.html); for [GitHub Copilot](copilot.html) and [Codex](codex.html), see their pages.
 
 {: .important }
 You need Docker on the person's computer, and a copy of the server's credentials there, as in the page for where your Liferay runs ([Tomcat](tomcat.html), [Docker](docker.html), [PaaS](paas.html)), readable only by them.
