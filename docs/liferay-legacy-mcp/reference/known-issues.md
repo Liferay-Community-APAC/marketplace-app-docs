@@ -6,7 +6,7 @@ nav_order: 4
 
 # Known Issues
 
-Known limitations in Liferay Legacy MCP 1.1.0.
+Known limitations in Liferay Legacy MCP 1.2.0.
 
 ## Drafts Are Only for New Articles
 
