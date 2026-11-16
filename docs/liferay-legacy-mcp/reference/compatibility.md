@@ -12,7 +12,7 @@ nav_order: 3
 
 ## Tested Releases
 
-Liferay Legacy MCP 1.1.0 supports Liferay DXP 7.4 U1–U92 and 2024.Q1 to 2025.Q4, with a Liferay DXP Enterprise Subscription. It doesn't run with Liferay Portal Community Edition: by default (`MCP_REQUIRE_DXP=true`), the server refuses to start unless the Liferay it connects to is confirmed as Liferay DXP. It was tested on the latest update of each quarterly release, and on 7.4 U92:
+Liferay Legacy MCP 1.2.0 supports Liferay DXP 7.4 U1–U92 and 2024.Q1 to 2026.Q2, with a Liferay DXP Enterprise Subscription. It doesn't run with Liferay Portal Community Edition: by default (`MCP_REQUIRE_DXP=true`), the server refuses to start unless the Liferay it connects to is confirmed as Liferay DXP. It was tested on the latest update of each quarterly release, and on 7.4 U92:
 
 | Release | Tested Update | Connection |
 | --- | --- | --- |
@@ -24,6 +24,8 @@ Liferay Legacy MCP 1.1.0 supports Liferay DXP 7.4 U1–U92 and 2024.Q1 to 2025.Q
 | 2025.Q2 | 2025.Q2.12 | OAuth 2 or password |
 | 2025.Q3 | 2025.Q3.10 | OAuth 2 or password |
 | 2025.Q4 | 2025.Q4.12 | OAuth 2 or password |
+| 2026.Q1 LTS | 2026.Q1.9 | OAuth 2 or password |
+| 2026.Q2 | 2026.Q2.9 | OAuth 2 or password |
 | 7.4 U1–U92 | U92 | OAuth 2 or password; before U92, password only |
 
 Another update of these releases is expected to work, but wasn't tested. The server says so, without refusing: `get_server_info` reports whether your update was among those tested.
@@ -34,9 +36,18 @@ The server works on every 7.4 update release, down to U1, with a **password conn
 
 On the oldest updates, about 27 of the 37 tools are available. The others need Liferay APIs that didn't exist yet, and show as unavailable in `get_server_info`.
 
-## Liferay DXP 2026.Q1 and Later
+## Liferay DXP 2026.Q1 and 2026.Q2
 
-Liferay DXP 2026.Q1 and later have their own ways for AI to reach Liferay. The server isn't tested on them, and says so if connected to one.
+From 1.2.0, the server supports 2026.Q1 and 2026.Q2, the first releases on Jakarta EE and with the new *Spaces* content management. The server runs outside Liferay, so Jakarta EE makes no difference to it, and its article tools write web content fields the way Spaces needs.
+
+These releases also ship **Liferay's own MCP server**, as a beta behind a feature flag (`LPD-63311`), off by default, at `/o/mcp`. Both servers can run side by side, but their tools overlap. When the server starts, it checks whether Liferay's own MCP server answers, and if it does, it says so in its log and in `get_server_info` (`liferay.liferayMcp`, with a notice). It never stops because of it. If both are on:
+
+- Use one of them for a task rather than both, and prefer one for writes.
+- Give the two servers distinct names in your AI assistant, so you can tell their tools apart.
+
+## Liferay DXP 2026.Q3 and Later
+
+The server isn't tested on 2026.Q3 and later, and says so if connected to one. Those releases have Liferay's own MCP server, turned on with its `MCPServerConfiguration` setting as well as the feature flag; the server checks for it there too.
 
 ## Liferay SaaS
 

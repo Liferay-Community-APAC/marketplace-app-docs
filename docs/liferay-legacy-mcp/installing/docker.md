@@ -63,7 +63,7 @@ The server's container joins Liferay's network (`--network container:liferay`), 
       -e MCP_PUBLIC_URL=https://mcp.example.com \
       -e MCP_TRUST_PROXY=private \
       -e MCP_HTTP_API_KEYS_FILE=/run/mcp-secrets/api-keys \
-      ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.1.0-slim --http
+      ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.2.0-slim --http
     ```
 
     Create `/srv/liferay-mcp/secrets/api-keys` first, as in [Give Services API Keys](http.html#step-2-give-services-api-keys). The server is reachable at `127.0.0.1:3333` on the Docker host, through the port Liferay's container publishes. Put your HTTPS reverse proxy for `https://mcp.example.com` in front of it, and follow [For Services and People](http.html) for API keys and sign-in.
@@ -76,7 +76,7 @@ The server's container joins Liferay's network (`--network container:liferay`), 
       -e LIFERAY_URL=http://localhost:8080 \
       -e LIFERAY_ROUTES_CLIENT_EXTENSION=/opt/liferay/routes/default/liferay-mcp-oauth \
       -e LIFERAY_DEFAULT_SITE=my-site \
-      ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.1.0-slim
+      ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.2.0-slim
     ```
 
 - **On another computer:** copy the credentials out with `docker cp liferay:/opt/liferay/routes/default/liferay-mcp-oauth .`, give them to the person securely, and set `LIFERAY_URL` to your Liferay's address.
@@ -87,6 +87,7 @@ Checked on Liferay DXP 2025.Q1.29 in Docker: the zip created the application and
 ## Day to Day
 
 - **After Liferay's container restarts,** restart the server's container too, since it shares Liferay's network: `docker restart liferay-mcp`.
+- **Don't reach Liferay at `host.docker.internal`.** Liferay answers a host name it doesn't know with an error (HTTP 500, "Invalid host name" in its log), and the server won't start. Share Liferay's network as above, or add the name to Liferay's `virtual.hosts.valid.hosts` first.
 - **If you replace Liferay's container,** the client extension zip goes with it: copy it in again as in Step 2. The routes volume keeps the credentials, and deploying the zip again keeps the same ones. Restart the server afterwards, since it shares Liferay's network.
 
 ## Related Information

@@ -28,6 +28,7 @@ liferay-mcp-oauth-headless-server:
     - Liferay.Headless.Batch.Engine.everything.read
     - Liferay.Headless.Delivery.everything.read
     - Liferay.Headless.Form.everything.read
+    - Liferay.Object.Admin.REST.everything.read
     - liferay-json-web-services.everything.read
   .serviceAddress: localhost:3333
   .serviceScheme: http
