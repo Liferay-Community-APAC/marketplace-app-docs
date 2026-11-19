@@ -1,7 +1,6 @@
 ---
 title: Installing
-nav_exclude: true
-search_exclude: true
+nav_order: 3
 description: Install the AI Hub Legacy Connector — the connector user, the OAuth client extensions, and the module — with Docker or by hand.
 ---
 
@@ -25,7 +24,7 @@ The OAuth client extension names this user as its application's user. Nothing ev
 
 ## With Docker (recommended)
 
-The installer image `ghcr.io/lgsapac/liferay-aihub-legacy-connector` holds the module for all eight releases and its client extensions, and writes them into a Liferay deploy folder you mount. It is private — access follows the repository, so `docker login ghcr.io` with a GitHub token that has `read:packages`.
+The installer image `ghcr.io/liferay-community-apac/liferay-aihub-legacy-connector` holds the module for all eight releases and its client extensions, and writes them into a Liferay deploy folder you mount. It is a public package on GitHub Container Registry — [`liferay-aihub-legacy-connector`](https://github.com/orgs/Liferay-Community-APAC/packages/container/package/liferay-aihub-legacy-connector) — so it pulls without authentication.
 
 Create the `aihub-connector` user first (above), then:
 
@@ -34,7 +33,7 @@ docker run --rm \
   -v /path/to/liferay/deploy:/deploy \
   -e LIFERAY_RELEASE=2025.q1 \
   -e LIFERAY_URL=https://liferay.example.com \
-  ghcr.io/lgsapac/liferay-aihub-legacy-connector:latest install
+  ghcr.io/liferay-community-apac/liferay-aihub-legacy-connector:latest install
 ```
 
 This writes the module jar and the `liferay-aihub-legacy-token` client extension into the deploy folder; Liferay installs them from there (module **Active**, the OAuth application created with its two read scopes). For the broader cell scopes, add `-e CELL_SCOPES=true` to also write `liferay-aihub-legacy-token-cell` (see [Configuration → The cell's scopes](configuration.html#the-cells-scopes-optional)).
@@ -42,7 +41,7 @@ This writes the module jar and the `liferay-aihub-legacy-token` client extension
 Print the configuration template with:
 
 ```bash
-docker run --rm ghcr.io/lgsapac/liferay-aihub-legacy-connector:2.1.0 config
+docker run --rm ghcr.io/liferay-community-apac/liferay-aihub-legacy-connector:2.9.1 config
 ```
 
 The installer validates its inputs: missing variables, an unknown release, a non-`http(s)` URL and a missing `/deploy` mount each stop it with a message.
