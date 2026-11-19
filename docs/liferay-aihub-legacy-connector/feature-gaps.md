@@ -1,7 +1,6 @@
 ---
 title: Feature Gaps
-nav_exclude: true
-search_exclude: true
+nav_order: 14
 description: What the connector intentionally leaves with AI Hub, and the one deliberate behavior difference.
 ---
 

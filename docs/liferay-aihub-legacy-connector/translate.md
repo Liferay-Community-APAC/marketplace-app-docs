@@ -1,7 +1,6 @@
 ---
 title: Translate
-nav_exclude: true
-search_exclude: true
+nav_order: 7
 description: Translate a Web Content article's localizable fields into the site's other languages with the in-editor assistant.
 ---
 

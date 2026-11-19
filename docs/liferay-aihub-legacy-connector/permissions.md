@@ -1,7 +1,6 @@
 ---
 title: Author Permissions
-nav_exclude: true
-search_exclude: true
+nav_order: 12
 description: What a non-admin content author needs for each in-editor assistant action.
 ---
 

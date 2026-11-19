@@ -1,7 +1,6 @@
 ---
 title: Compatibility
-nav_exclude: true
-search_exclude: true
+nav_order: 10
 description: The eight supported Liferay DXP releases, their platform, and the Liferay Search endpoint on each.
 ---
 
