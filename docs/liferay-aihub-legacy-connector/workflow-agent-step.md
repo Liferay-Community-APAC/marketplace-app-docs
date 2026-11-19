@@ -1,7 +1,6 @@
 ---
 title: Workflow Agent Step
-nav_exclude: true
-search_exclude: true
+nav_order: 8
 description: Run an AI Hub agent as a Kaleo workflow step, standing in for the 2026.Q1+ AI Hub agent node.
 ---
 

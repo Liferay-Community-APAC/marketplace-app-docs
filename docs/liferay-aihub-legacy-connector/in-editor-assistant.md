@@ -1,7 +1,6 @@
 ---
 title: In-editor AI Assistant
-nav_exclude: true
-search_exclude: true
+nav_order: 6
 description: The connector's in-editor AI Assistant — writing tools, tag and category suggestions, field and image generation — in the Web Content editor, with the server-side proxy.
 ---
 

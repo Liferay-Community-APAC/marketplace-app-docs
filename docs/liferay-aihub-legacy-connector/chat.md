@@ -1,7 +1,6 @@
 ---
 title: Chat Widget
-nav_exclude: true
-search_exclude: true
+nav_order: 5
 description: Turn on AI Hub Chat and how the widget behaves on DXP 2024.Q1 to 2025.Q4.
 ---
 

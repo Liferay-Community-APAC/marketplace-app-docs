@@ -1,7 +1,6 @@
 ---
 title: Security
-nav_exclude: true
-search_exclude: true
+nav_order: 13
 description: How the AI Hub Legacy Connector keeps AI Hub's access token, the user tokens, and the client secret safe.
 ---
 

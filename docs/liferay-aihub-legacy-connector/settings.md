@@ -1,7 +1,6 @@
 ---
 title: Settings Reference
-nav_exclude: true
-search_exclude: true
+nav_order: 11
 description: Every AI Hub Legacy Connector setting and environment variable.
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Liferay Search
-nav_exclude: true
-search_exclude: true
+nav_order: 9
 description: How AI Hub's Liferay Search (RAG) node works across the eight supported releases, and the feature flags it needs.
 ---
 
