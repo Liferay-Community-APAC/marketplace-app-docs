@@ -1,7 +1,6 @@
 ---
 title: Getting Started
-nav_exclude: true
-search_exclude: true
+nav_order: 2
 description: What the AI Hub Legacy Connector does, how its pieces fit together, and what you need before installing.
 ---
 

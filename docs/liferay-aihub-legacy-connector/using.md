@@ -1,7 +1,6 @@
 ---
 title: Using
-nav_exclude: true
-search_exclude: true
+nav_order: 5
 description: The AI Hub chat widget, the in-editor AI Assistant (writing tools, tags, categories, generate, image, translate), and the workflow agent step.
 ---
 
@@ -23,7 +22,7 @@ Once [AI Hub Chat is on](configuration.html#turn-on-ai-hub-chat), AI Hub's chat 
 
 With [AI Hub Assistant on](configuration.html#turn-on-the-in-editor-ai-assistant), an **✨ AI** action appears beside Web Content fields in the editor. Each action runs an AI Hub agent for the signed-in user and writes the result back. These are AI Hub's own agents — the connector defines none.
 
-![The Web Content editor with the in-editor AI Assistant: an AI action on the Title and body fields, and a toast confirming tags were suggested and applied.](../assets/images/suggest-tags.png){: .screenshot }
+![The Web Content editor with the in-editor AI Assistant: an AI action on the Title and body fields, and a toast confirming tags were suggested and applied.](assets/images/suggest-tags.png){: .screenshot }
 
 ### Writing tools
 
@@ -44,7 +43,7 @@ On the Categorization panel, **✨ Suggest tags** reads the article, fetches the
 
 **✨ Suggest categories** matches the article against the site's vocabularies and applies the categories that fit — the ids land in the form's hidden fields and persist on save.
 
-![The Web Content editor showing suggested categories applied to the Topics vocabulary, with a toast confirming two categories were added.](../assets/images/suggest-categories.png){: .screenshot }
+![The Web Content editor showing suggested categories applied to the Topics vocabulary, with a toast confirming two categories were added.](assets/images/suggest-categories.png){: .screenshot }
 
 ### Generate a field value
 

@@ -1,7 +1,6 @@
 ---
 title: Configuration
-nav_exclude: true
-search_exclude: true
+nav_order: 4
 description: Connect AI Hub, turn on chat and the in-editor assistant, the proxy, the secret file, multi-instance servers, and the Liferay Search flags.
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Reference
-nav_exclude: true
-search_exclude: true
+nav_order: 6
 description: Compatibility, the settings reference, author permissions, how the connector is kept safe, the feature gaps, and versions.
 ---
 
@@ -96,4 +95,4 @@ Releases are tracked by the module's `Bundle-Version` in the connector's `CHANGE
 - Per-release editor-DOM validation across all eight releases, and a deployed-connector end-to-end run on 2025.Q4.
 
 {: .note }
-This documentation is a **draft for review**. Version numbers and the final screenshots will be settled before it replaces the app's coming-soon page.
+The current release is **2.9.1**. See the connector's `CHANGELOG.md` for the full version history.
