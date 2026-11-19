@@ -1,0 +1,37 @@
+# Labels each issue with the app chosen in its issue form, as "app: <name>".
+# The label is created the first time it's used, so adding an app to the forms' App dropdown is enough.
+name: Label issues by app
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            const match = body.match(/^### App\s*\n+([^\n]+)/m);
+            if (!match) return;
+            const app = match[1].trim();
+            if (!app || app === '_No response_') return;
+            const wanted = `app: ${app}`;
+            const current = context.payload.issue.labels.map((l) => l.name);
+            for (const name of current.filter((n) => n.startsWith('app: ') && n !== wanted)) {
+              await github.rest.issues.removeLabel({ ...context.repo, issue_number: context.issue.number, name });
+            }
+            if (!current.includes(wanted)) {
+              try {
+                await github.rest.issues.getLabel({ ...context.repo, name: wanted });
+              } catch (e) {
+                if (e.status !== 404) throw e;
+                await github.rest.issues.createLabel({ ...context.repo, name: wanted, color: '178a4e', description: `Issues about ${app}` });
+              }
+              await github.rest.issues.addLabels({ ...context.repo, issue_number: context.issue.number, labels: [wanted] });
+            }

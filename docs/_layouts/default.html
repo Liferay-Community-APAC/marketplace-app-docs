@@ -12,6 +12,7 @@
     search_exclude: true to leave a page out of the site search
   and on an app's home page (docs/<app>/index.md) only:
     footer_note: a line for the footer, such as the app's licence
+    issues:     optional; where to report an issue, if not this repository's tracker
     og_image:   a picture for link previews, as a path under the site
 {%- endcomment -%}
 {%- assign main = site.main_site | default: "" -%}
@@ -91,6 +92,10 @@
         {%- endif %}
       </li>
       {%- endfor %}
+    </ul>
+    {%- comment %} Every app's issues go to this repository's tracker, unless its home page names another in "issues". {% endcomment %}
+    <ul class="docs-nav-issues" style="margin-top: 12px; padding-top: 8px; border-top: 1px solid var(--border);">
+      <li><a href="{{ app_home.issues | default: 'https://github.com/Liferay-Community-APAC/marketplace-app-docs/issues/new/choose' }}">Report an issue →</a></li>
     </ul>
   </details>
   {%- endif %}
