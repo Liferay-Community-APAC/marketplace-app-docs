@@ -20,6 +20,22 @@ An app that has its own code repository can keep its docs there instead, started
 | `.github/workflows/pages.yml` | Publishes the docs with the shared workflow whenever `docs/` changes on `main`. |
 | `images/<app>/` | A container image for an app, where it has one. `images/liferay-usage-intelligence/` is published as `ghcr.io/liferay-community-apac/liferay-usage-intelligence` by `.github/workflows/liferay-usage-intelligence-image.yml` whenever a new zip is added to that app's `assets/downloads/`. |
 
+## Report an issue
+
+This repository is the issue tracker for **every** Liferay Community APAC Marketplace App, including the ones whose
+code or docs live in another repository. Open an issue at
+<https://github.com/Liferay-Community-APAC/marketplace-app-docs/issues/new/choose> and pick a form:
+
+| Form | For |
+| --- | --- |
+| Bug report | Something doesn't work as the app's guide says. |
+| Feature request | An improvement to an app. |
+| Documentation problem | A guide page that is wrong, unclear or missing something. |
+
+Each form asks which app the issue is about, and `.github/workflows/issue-labels.yml` labels the issue
+`app: <name>` accordingly. Questions go to [Liferay Discuss](https://liferay-community-apac.github.io/get-help/),
+and security vulnerabilities are reported privately (see [SECURITY.md](SECURITY.md)).
+
 ## Add an app
 
 1. **Copy `APP_TEMPLATE/` to `docs/<app>/`**, where `<app>` is the app's name in lowercase with dashes, for
@@ -53,6 +69,8 @@ An app that has its own code repository can keep its docs there instead, started
     That adds the app to the homepages and the Marketplace Apps pages, includes its guide in the site search, and
     tells search engines about it. Every app in this repository shares the one search index and sitemap; the main
     site uses each only once.
+5. **Add the app to the issue forms**: add its name to the `App` dropdown in each form in
+   `.github/ISSUE_TEMPLATE/`. Its `app: <name>` label is created the first time an issue uses it.
 
 ## Preview locally
 

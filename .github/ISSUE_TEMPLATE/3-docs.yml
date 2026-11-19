@@ -1,0 +1,31 @@
+name: Documentation problem
+description: Something in an app's guide is wrong, unclear or missing.
+title: "[Docs] "
+labels: ["documentation", "needs-triage"]
+body:
+  - type: dropdown
+    id: app
+    attributes:
+      label: App
+      options:
+        - Liferay Forums
+        - Liferay Legacy MCP
+        - Liferay Usage Intelligence
+        - Liferay Migration Studio
+        - AI Hub Legacy Connector
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: The address of the guide page.
+      placeholder: "https://liferay-community-apac.github.io/marketplace-app-docs/…"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong or missing
+    validations:
+      required: true

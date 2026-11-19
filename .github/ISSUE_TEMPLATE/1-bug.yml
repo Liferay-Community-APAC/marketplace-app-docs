@@ -1,0 +1,88 @@
+name: Bug report
+description: Something in a Marketplace App doesn't work as its guide says.
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting this. One issue per problem, please.
+
+        **Never paste passwords, tokens, OAuth secrets, license keys or customer data**, in the text, logs or screenshots. This repository is public.
+  - type: dropdown
+    id: app
+    attributes:
+      label: App
+      options:
+        - Liferay Forums
+        - Liferay Legacy MCP
+        - Liferay Usage Intelligence
+        - Liferay Migration Studio
+        - AI Hub Legacy Connector
+    validations:
+      required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+      description: From the app's guide, its download name or the Marketplace.
+      placeholder: "1.2.0"
+    validations:
+      required: true
+  - type: input
+    id: dxp-version
+    attributes:
+      label: Liferay DXP version
+      description: Control Panel → Server Administration shows it.
+      placeholder: "2025.Q4.5, 2026.Q1.2 LTS or 7.4 U92"
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Where Liferay runs
+      options:
+        - Self-hosted (Tomcat bundle)
+        - Self-hosted (Docker)
+        - Liferay Cloud (PaaS)
+        - Liferay SaaS
+        - Local development
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you saw, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to …
+        2. Click …
+        3. See …
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: The relevant lines from the Liferay log or the browser console. Remove secrets first.
+      render: text
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Drag images here. Hide tokens, emails and customer data first.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you submit
+      options:
+        - label: I searched the existing issues, and this isn't one of them.
+          required: true
+        - label: I removed passwords, tokens, license keys and customer data from everything above.
+          required: true

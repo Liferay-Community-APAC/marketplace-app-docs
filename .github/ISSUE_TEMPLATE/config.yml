@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question
+    url: https://liferay-community-apac.github.io/get-help/
+    about: How do I…? Questions about using an app go to the Liferay community on Liferay Discuss.
+  - name: Report a security vulnerability
+    url: https://github.com/Liferay-Community-APAC/marketplace-app-docs/security/advisories/new
+    about: Report it privately, never in a public issue.
+  - name: Liferay subscription support
+    url: https://help.liferay.com/
+    about: These are community apps. For Liferay DXP itself, use the Liferay Help Center.
