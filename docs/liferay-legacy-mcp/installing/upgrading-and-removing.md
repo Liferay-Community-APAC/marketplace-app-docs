@@ -36,6 +36,17 @@ For an AI assistant that starts the server itself, change the tag in its `mcpSer
 
 The server keeps nothing between restarts except its audit log in `/data`. Sign-in sessions are in memory, so a restart drops them, and people sign in again. After changing the OAuth application, copy the routes again if they changed, and restart the server.
 
+### If You Turned Off Email Verification
+
+Earlier versions of this guide said to clear **Require strangers to verify their email address?** in *Control Panel* → *Instance Settings* → *User Authentication*. That setting applies to the whole instance: while it's off, people who sign up, and people who change their email address, aren't asked to prove they own it. If you cleared it for this server, turn it back on, in this order:
+
+1. Verify the service user's email address, as in [Step 2 of Creating the Service User](liferay-setup.html#step-2-verify-its-email-address). Do this first: once the setting is on, Liferay refuses every API call from the service user until its email address is verified.
+1. Select **Require strangers to verify their email address?** again, and click **Save**.
+1. Ask the AI assistant *"What Liferay server are you connected to?"* to check that the server still connects.
+
+{: .note }
+The same applies to every other user created while the setting was off: their email addresses aren't verified, so once it's on, they're asked to verify them at their next sign-in, and API calls as them are refused until they do. Check for other integration or service users before you turn it back on, and verify them the same way.
+
 ## Removing
 
 1. Stop and remove the container. Keep the `/data` volume if you need the audit log.
