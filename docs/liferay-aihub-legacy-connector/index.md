@@ -8,7 +8,7 @@ description: AI Hub Legacy Connector brings Liferay AI Hub's chat widget and in-
 # AI Hub Legacy Connector
 {: .no_toc }
 
-An OSGi module for **Liferay DXP 2024.Q1 to 2025.Q4** that brings Liferay AI Hub to releases that shipped before the AI Hub cell. It puts AI Hub's chat widget on every page and adds AI Hub's in-editor AI Assistant to the Web Content editor — writing tools, tag and category suggestions, field generation and translation — with a per-user token and a server-side proxy, and without changing Liferay's code. It steps aside automatically once you upgrade to a release that has Liferay's own AI Hub cell (2026.Q1 and later).
+An OSGi module for **Liferay DXP 2024.Q1 to 2025.Q4** that brings Liferay AI Hub to releases that shipped before the AI Hub cell. It puts AI Hub's chat widget on every page and adds AI Hub's in-editor AI Assistant to the Web Content editor — writing tools, tag and category suggestions, field and image generation, and translation — with a per-user token and a server-side proxy, and without changing Liferay's code. It steps aside automatically once you upgrade to a release that has Liferay's own AI Hub cell (2026.Q1 and later).
 
 ![The Web Content editor with the in-editor AI Assistant: an AI action on the Title and body fields, and a toast confirming that tags were suggested and applied to the article.](assets/images/suggest-tags.png){: .screenshot }
 
@@ -21,7 +21,7 @@ An OSGi module for **Liferay DXP 2024.Q1 to 2025.Q4** that brings Liferay AI Hub
 ## Highlights
 
 - **AI Hub chat on every page.** The AI Hub chat widget, configured in Instance and Site Settings the way the 2026.Q1+ cell provides it, on every page, without changing Liferay's code.
-- **In-editor AI Assistant.** Writing tools (improve, fix spelling and grammar, make shorter or longer, change tone), suggest tags and categories, generate a field value, and translate content into the site's other languages — right inside the Web Content editor.
+- **In-editor AI Assistant.** Writing tools (improve, fix spelling and grammar, make shorter or longer, change tone), suggest tags and categories, generate a field value or an image, and translate content into the site's other languages — right inside the Web Content editor.
 - **Secure by default.** A per-user token so the chat acts as the signed-in user, and a server-side proxy that keeps AI Hub's access token out of the browser: browsers only ever call their own Liferay.
 - **Steps aside on upgrade.** Deactivates itself automatically where Liferay's own AI Hub cell or the Click to Chat AI Hub provider is present, so moving to 2026.Q1 or later needs no cleanup.
 - **Across eight releases.** Validated on DXP 2024.Q1, Q2, Q3, Q4 and 2025.Q1, Q2, Q3, Q4, each on the latest update of the quarter.
