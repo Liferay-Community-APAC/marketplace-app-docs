@@ -12,15 +12,36 @@ The server acts as one Liferay user, with least privilege. Create it once per Li
 1. TOC
 {:toc}
 
-## Step 1: Turn Off Email Verification for New Users
-
-If it's on: *Control Panel* → *Instance Settings* → *User Authentication* → clear **Require strangers to verify their email address?**, and click **Save**. Otherwise the new user can wait on the *Verify Email Address* page, and every API call as it fails with 403.
-
-## Step 2: Create the User
+## Step 1: Create the User
 
 Create a user with the screen name **`mcp-service`**, for example with the email `mcp-service@example.com`. The [OAuth 2 client extension](../assets/downloads/liferay-mcp-oauth.zip) acts as the user with that screen name; to use another one, see [Changing the Client Extension](#changing-the-client-extension).
 
-Give it a password nobody uses, since OAuth doesn't need one, and make sure it isn't required to change it at its first sign-in (the password policy's **Change Required**), or every API call as it fails with 403.
+Give it a strong password that only you know: OAuth doesn't need it, but you may use it once in Step 2. Make sure it isn't required to change it at its first sign-in (the password policy's **Change Required**), or every API call as it fails with 403.
+
+## Step 2: Verify Its Email Address
+
+While *Control Panel* → *Instance Settings* → *User Authentication* → **Require strangers to verify their email address?** is on, Liferay refuses every API call, OAuth 2 tokens included, from a user whose email address isn't verified. A user created in the Control Panel starts unverified, so verify the service user's email address once, in one of these ways.
+
+{: .warning }
+Don't turn that setting off for this. It applies to the whole instance: while it's off, people who sign up, and people who change their email address, aren't asked to prove they own it.
+
+- **Sign in as it once.** Give the service user an email address you can receive, such as a shared mailbox. Sign in as `mcp-service`, and follow the *Verify Email Address* page: Liferay emails a verification code to that address. This needs Liferay's outgoing mail.
+- **Mark it verified as an administrator,** on Liferay Self-Hosted and Liferay PaaS. In *Control Panel* → *Server Administration* → *Script*, with **Groovy** as the language, paste this script, fill in **Text Verification**, and click **Execute**:
+
+    ```groovy
+    import com.liferay.portal.kernel.security.auth.CompanyThreadLocal
+    import com.liferay.portal.kernel.service.UserLocalServiceUtil
+
+    def user = UserLocalServiceUtil.getUserByScreenName(CompanyThreadLocal.getCompanyId(), "mcp-service")
+
+    UserLocalServiceUtil.updateEmailAddressVerified(user.getUserId(), true)
+
+    out.println("Email address verified for " + user.getScreenName())
+    ```
+
+    It marks only this user's email address as verified, and prints *Email address verified for mcp-service*. Use the screen name you gave the user.
+
+If the setting is off in your instance, there's nothing to do here.
 
 ## Step 3: Create Its Roles
 
