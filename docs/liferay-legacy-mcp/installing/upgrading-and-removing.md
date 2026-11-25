@@ -63,6 +63,10 @@ The server keeps nothing between restarts except its audit log in `/data`. Sign-
 
 Nothing changes in Liferay: pull the new tag, and restart the server.
 
+### From 1.3.0 to 1.4.0
+
+Nothing changes in Liferay: pull the new tag, and restart the server. The new [`setup` command](quick-setup.html) is optional; run on an instance set up by hand, it finds the user, roles and client extension already there.
+
 ### If You Turned Off Email Verification
 
 Earlier versions of this guide said to clear **Require strangers to verify their email address?** in *Control Panel* → *Instance Settings* → *User Authentication*. That setting applies to the whole instance: while it's off, people who sign up, and people who change their email address, aren't asked to prove they own it. If you cleared it for this server, turn it back on, in this order:

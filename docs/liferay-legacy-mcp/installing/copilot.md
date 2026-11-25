@@ -20,7 +20,7 @@ You need Docker, GitHub Copilot, and a copy of the server's credentials on your 
 Copilot waits only a limited time for a server to start, and the first start would also download the image. Download it first:
 
 ```bash
-docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim
+docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.4.0-slim
 ```
 
 ## Step 2: Add the Server
@@ -40,7 +40,7 @@ Add the server to `~/.copilot/mcp-config.json`, with your Liferay's address, you
         "-e", "LIFERAY_URL=https://liferay.example.com",
         "-e", "LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth",
         "-e", "LIFERAY_DEFAULT_SITE=my-site",
-        "ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim"
+        "ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.4.0-slim"
       ]
     }
   }
@@ -48,7 +48,7 @@ Add the server to `~/.copilot/mcp-config.json`, with your Liferay's address, you
 ```
 
 - `/Users/me/liferay-mcp/routes` is the folder that holds the `liferay-mcp-oauth` folder. Give its full path: `~` isn't expanded here.
-- For the page inspection tools, use the `1.3.0-full` image.
+- For the page inspection tools, use the `1.4.0-full` image.
 - `liferay-legacy` is the server's name in Copilot. To connect more than one Liferay, add one server for each, named after it, such as `liferay-legacy-prod` and `liferay-legacy-test`.
 - No password goes in this file: the server reads the OAuth credentials from the routes folder when it starts.
 
@@ -61,7 +61,7 @@ copilot mcp add liferay-legacy -- docker run -i --rm \
   -e LIFERAY_URL=https://liferay.example.com \
   -e LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth \
   -e LIFERAY_DEFAULT_SITE=my-site \
-  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim
+  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.4.0-slim
 ```
 
 Everything after `--` is the command Copilot runs to start the server.

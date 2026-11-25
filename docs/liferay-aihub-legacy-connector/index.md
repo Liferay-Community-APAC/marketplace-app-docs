@@ -25,6 +25,7 @@ An OSGi module for **Liferay DXP 2024.Q1 to 2025.Q4** that brings Liferay AI Hub
   <a class="card doc" href="translate.html"><strong>Translate</strong><span>Translate localizable fields into the site's languages.</span></a>
   <a class="card doc" href="workflow-agent-step.html"><strong>Workflow Agent Step</strong><span>Run an AI Hub agent as a Kaleo workflow step.</span></a>
   <a class="card doc" href="liferay-search.html"><strong>Liferay Search</strong><span>AI Hub's RAG search node across the eight releases.</span></a>
+  <a class="card doc" href="ai-hub-workflows.html"><strong>AI Hub Workflows (pilot)</strong><span>Let an agent's workflow call the Liferay Legacy MCP server's tools, as the user.</span></a>
   <a class="card doc" href="compatibility.html"><strong>Compatibility</strong><span>The eight supported releases and platforms.</span></a>
   <a class="card doc" href="settings.html"><strong>Settings Reference</strong><span>Every setting and environment variable.</span></a>
   <a class="card doc" href="permissions.html"><strong>Author Permissions</strong><span>What a non-admin author needs for each action.</span></a>

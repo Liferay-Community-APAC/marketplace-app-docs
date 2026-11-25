@@ -93,7 +93,7 @@ First, [create the service user](liferay-setup.html), and deploy the OAuth 2 cli
       </div>
       <div class="lmcp-field">
         <span>Updates</span>
-        <label><input type="radio" name="updates" value="pinned" checked> Stay on 1.3.0, and upgrade by hand</label>
+        <label><input type="radio" name="updates" value="pinned" checked> Stay on 1.4.0, and upgrade by hand</label>
         <label><input type="radio" name="updates" value="auto"> Use each new 1.x release automatically (<a href="upgrading-and-removing.html#updating-automatically">how</a>)</label>
       </div>
       <div class="lmcp-field" data-show="mode=personal">
@@ -110,7 +110,7 @@ First, [create the service user](liferay-setup.html), and deploy the OAuth 2 cli
 
   <script>
   (function () {
-    var VERSION = "1.3.0";
+    var VERSION = "1.4.0";
     var IMAGE = "ghcr.io/liferay-community-apac/liferay-legacy-mcp";
     var root = document.getElementById("lmcp-builder");
     var form = document.getElementById("lmcp-form");

@@ -20,7 +20,7 @@ The connector supports the eight quarterly releases from **2024.Q1 to 2025.Q4**,
 | 2025.Q3 | Jakarta EE | Liferay's, behind `feature.flag.LPD-11232=true` |
 | 2025.Q4 | Jakarta EE | Liferay's, on by default |
 
-The chat, tokens, proxy and the in-editor assistant's editor DOM were validated on a real Web Content editor on every one of the eight releases. A deployed-connector end-to-end run (image install → token → inject → proxy → write-back) was done on 2025.Q4. The current release is **2.9.1**.
+The chat, tokens, proxy and the in-editor assistant's editor DOM were validated on a real Web Content editor on every one of the eight releases. A deployed-connector end-to-end run (image install → token → inject → proxy → write-back) was done on 2025.Q4. The current release is **2.11.0**.
 
 {: .important }
 **A Liferay DXP Enterprise Subscription and a licensed Liferay AI Hub are both required.** The connector is proprietary, for Liferay internal use, and is not supported by Liferay.

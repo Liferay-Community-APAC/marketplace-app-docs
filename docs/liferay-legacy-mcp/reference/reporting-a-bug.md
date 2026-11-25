@@ -27,7 +27,7 @@ Report problems with Liferay Legacy MCP, ask questions, and suggest improvements
 
 Include:
 
-- the Liferay Legacy MCP version and image tag, such as `1.3.0-slim`, and the Liferay DXP version;
+- the Liferay Legacy MCP version and image tag, such as `1.4.0-slim`, and the Liferay DXP version;
 - where Liferay runs (Liferay Self-Hosted with Tomcat or Docker, or Liferay PaaS), and how the server is used (Claude Code, the Claude desktop app, another AI assistant, or over HTTPS);
 - what you asked, what happened, and what you expected;
 - the server's log lines (standard error, or `docker logs`), and errors from the Liferay log.

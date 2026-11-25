@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+
+<workflow-definition
+	xmlns="urn:liferay.com:liferay-workflow_7.4.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:liferay.com:liferay-workflow_7.4.0 http://www.liferay.com/dtd/liferay-workflow-definition_7_4_0.xsd"
+>
+	<name>REPLACE_WITH_EDITOR_NAME</name>
+	<version>1</version>
+	<state>
+		<name>start</name>
+		<metadata>
+			<![CDATA[
+				{
+					"xy": [
+						275,
+						25
+					]
+				}
+			]]>
+		</metadata>
+		<initial>true</initial>
+		<labels>
+			<label language-id="en_US">
+				Start
+			</label>
+		</labels>
+		<transitions>
+			<transition>
+				<labels>
+					<label language-id="en_US">
+						Search with the MCP server
+					</label>
+				</labels>
+				<name>searchContent</name>
+				<target>searchContent</target>
+				<default>true</default>
+			</transition>
+		</transitions>
+	</state>
+	<http-request>
+		<name>searchContent</name>
+		<description>Make outbound calls to REST APIs or client extensions.</description>
+		<metadata>
+			<![CDATA[
+				{
+					"xy": [
+						275,
+						200
+					]
+				}
+			]]>
+		</metadata>
+		<labels>
+			<label language-id="en_US">
+				Search with the MCP server
+			</label>
+		</labels>
+		<http-method>POST</http-method>
+		<input-variables>
+			<![CDATA[
+[
+	{
+		"name": "request",
+		"type": "string"
+	}
+]
+]]>
+		</input-variables>
+		<output-variables>
+			<![CDATA[
+[
+	{
+		"name": "searchResults",
+		"type": "string"
+	}
+]
+]]>
+		</output-variables>
+		<request-body>
+			<![CDATA[{{request}}]]>
+		</request-body>
+		<timeout>60000</timeout>
+		<transitions>
+			<transition>
+				<labels>
+					<label language-id="en_US">
+						Answer
+					</label>
+				</labels>
+				<name>answer</name>
+				<target>answer</target>
+				<default>true</default>
+			</transition>
+		</transitions>
+		<url>REPLACE_WITH_DXP_URL/o/ai-hub-legacy-mcp/tools/search_content?input=query&amp;pageSize=5</url>
+	</http-request>
+	<llm>
+		<name>answer</name>
+		<description>Generate content, summarize and classify data using LLM models.</description>
+		<metadata>
+			<![CDATA[
+				{
+					"xy": [
+						275,
+						375
+					]
+				}
+			]]>
+		</metadata>
+		<labels>
+			<label language-id="en_US">
+				Answer
+			</label>
+		</labels>
+		<input-variables>
+			<![CDATA[
+[
+	{
+		"name": "request",
+		"type": "string"
+	},
+	{
+		"name": "searchResults",
+		"type": "string"
+	}
+]
+]]>
+		</input-variables>
+		<output-variables>
+			<![CDATA[
+[
+	{
+		"name": "response",
+		"type": "string"
+	}
+]
+]]>
+		</output-variables>
+		<prompt>
+			<![CDATA[You answer questions about the company's Liferay DXP site using only the web content search results provided. Name the articles or documents you used. If the results don't answer the question, say so instead of guessing. Be concise.
+]]>
+		</prompt>
+		<tools>
+			<![CDATA[
+[]
+]]>
+		</tools>
+		<transitions>
+			<transition>
+				<labels>
+					<label language-id="en_US">
+						End
+					</label>
+				</labels>
+				<name>end</name>
+				<target>end</target>
+				<default>true</default>
+			</transition>
+		</transitions>
+		<user-message>
+			<![CDATA[Question: {{request}}
+
+Web content search results (from the MCP server's search_content tool):
+{{searchResults}}
+]]>
+		</user-message>
+	</llm>
+	<state>
+		<name>end</name>
+		<metadata>
+			<![CDATA[
+				{
+					"xy": [
+						275,
+						550
+					],
+					"terminal": true
+				}
+			]]>
+		</metadata>
+		<labels>
+			<label language-id="en_US">
+				End
+			</label>
+		</labels>
+	</state>
+</workflow-definition>

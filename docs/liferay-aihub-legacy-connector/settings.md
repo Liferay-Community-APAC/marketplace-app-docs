@@ -22,6 +22,8 @@ All settings are under **Instance Settings → AI Hub** — AI Hub Tokens is ins
 | Proxy AI Hub's Chat Calls | `proxyEnabled` | **on** | Keeps AI Hub's access token on the server. |
 | AI Hub Assistant | `assistantEnabled` | off | The in-editor assistant. |
 | Workflow Agent Step | `workflowAgentStepEnabled` | off | The Kaleo agent step. |
+| MCP Server URL | `mcpServerURL` | — | The Liferay Legacy MCP server, as this Liferay reaches it, for AI Hub workflows calling its tools at `/o/ai-hub-legacy-mcp/tools/<tool>` (2.10.0). Empty: off. |
+| MCP Server Tools | `mcpServerTools` | — | Optional: the only tools passed on, for example `search_content` (2.11.0). Empty: any tool the MCP server routes. |
 
 ## AI Hub Chat (Legacy Connector)
 
@@ -32,12 +34,22 @@ All settings are under **Instance Settings → AI Hub** — AI Hub Tokens is ins
 | Guest Users Allowed | `guestUsersAllowed` | off | Let guests chat anonymously. |
 | AI Hub URL | `aiHubURL` | — | Optional per-site override of the browser-facing URL. |
 
+## Update Check (Legacy Connector)
+
+In **System Settings → AI Hub**, for the whole server (2.11.0).
+
+| Setting | Key | Default | Notes |
+|---|---|---|---|
+| Enabled | `enabled` | off | Once a day, reads the latest version and tells administrators when a newer one is out: in the log, and as a notice in Instance and System Settings. Never downloads or installs anything. |
+| Latest Version URL | `latestVersionURL` | this site's `latest.json` | Must be https. Change it only to a copy you host, for a server without access to GitHub. |
+
 ## Environment variables
 
 | Variable | Purpose |
 |---|---|
 | `LIFERAY_AIHUB_LEGACY_SECRETS_DIR` | Directory for the client secret file (default `$LIFERAY_HOME/secrets`). |
 | `LIFERAY_AIHUB_LEGACY_URLS` | Comma-separated allowed AI Hub URLs, required on multi-instance servers. |
+| `LIFERAY_AIHUB_LEGACY_MCP_URLS` | Comma-separated allowed MCP Server URLs, required on multi-instance servers. |
 
 ## Feature flags (for Liferay Search)
 

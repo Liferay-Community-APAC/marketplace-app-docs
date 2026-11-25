@@ -26,7 +26,7 @@ claude mcp add liferay-legacy -- docker run -i --rm \
   -e LIFERAY_URL=https://liferay.example.com \
   -e LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth \
   -e LIFERAY_DEFAULT_SITE=my-site \
-  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim
+  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.4.0-slim
 ```
 
 Everything after `--` is the command Claude Code runs to start the server. `~/liferay-mcp/routes` is the folder that holds the `liferay-mcp-oauth` folder.
@@ -77,7 +77,7 @@ claude mcp add liferay-legacy -- docker run -i --rm \
   -e LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth \
   -e LIFERAY_DEFAULT_SITE=my-site \
   -e MCP_WRITE_MODE=confirm \
-  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim
+  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.4.0-slim
 ```
 
 Start a new Claude Code session afterwards.

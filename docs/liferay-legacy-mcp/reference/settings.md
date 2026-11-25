@@ -60,7 +60,7 @@ For `create_site`, `create_object`, the design tools, the administration API are
 
 ## Page Inspection
 
-For `inspect_page` and `take_screenshot`, in the `1.3.0-full` image.
+For `inspect_page` and `take_screenshot`, in the `1.4.0-full` image.
 
 | Setting | Meaning | Default |
 | --- | --- | --- |
