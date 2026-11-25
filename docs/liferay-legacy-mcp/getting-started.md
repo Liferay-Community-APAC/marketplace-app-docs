@@ -34,7 +34,7 @@ The quickest way to see it work is one person, with a desktop AI assistant, on a
 
 1. [Create the service user](installing/liferay-setup.html).
 1. Deploy the OAuth 2 client extension, and copy its credentials, as on [Tomcat](installing/tomcat.html), [Docker](installing/docker.html) or [PaaS](installing/paas.html).
-1. Add the server to [Claude Code](installing/claude-code.html), [GitHub Copilot](installing/copilot.html), [Codex](installing/codex.html), or [another AI assistant](installing/stdio.html).
+1. Build the command with the [Command Builder](installing/command-builder.html), or add the server to [Claude Code](installing/claude-code.html), [GitHub Copilot](installing/copilot.html), [Codex](installing/codex.html), or [another AI assistant](installing/stdio.html).
 1. Ask: *"What Liferay server are you connected to?"* The assistant calls `get_server_info`, which names your Liferay's release, the connection, and which tools your Liferay supports.
 
 Then try a few questions from [What to Ask](using/what-to-ask.html), such as *"Find articles in my-site that haven't been modified in six months."*
