@@ -20,6 +20,7 @@ The server is set up with environment variables, passed with `-e` to `docker run
 | `LIFERAY_DEFAULT_SITE` | The site the tools use when a request doesn't name one: its friendly URL, name or ID. | None |
 | `LIFERAY_TIMEOUT_MS` | How long to wait for each Liferay request, in milliseconds. | `15000` |
 | `MCP_REQUIRE_DXP` | `true`: refuse to start unless the Liferay is confirmed to be Liferay DXP. `false`: run anyway, with a notice. | `true` |
+| `MCP_UPDATE_CHECK` | `true`: say in `get_server_info` and the log when a newer version of the server is published, by asking the public image registry, without signing in. Nothing about your Liferay or its users is sent. `false`: don't ask, for offline or locked-down installs. | `true` |
 
 ## Connection
 
@@ -59,7 +60,7 @@ For `create_site`, `create_object`, the design tools, the administration API are
 
 ## Page Inspection
 
-For `inspect_page` and `take_screenshot`, in the `1.2.0-full` image.
+For `inspect_page` and `take_screenshot`, in the `1.3.0-full` image.
 
 | Setting | Meaning | Default |
 | --- | --- | --- |
@@ -88,6 +89,8 @@ For people who sign in with Liferay over HTTPS.
 | `LIFERAY_SIGN_IN_CLIENT_SECRET_FILE` | A file holding its client secret. | None |
 | `MCP_OAUTH_REDIRECT_ALLOWLIST` | Which AI assistants may register, by the start of their redirect addresses, separated by commas. Desktop assistants on loopback are always allowed. | Any |
 | `MCP_OAUTH_CLIENT_METADATA` | `true`: accept assistants named by the `https` address of their metadata document. | `true` |
+| `MCP_SESSION_STORE_FILE` | A file to keep people's sign-ins in, so a restart doesn't sign everyone out. Encrypted with the key in `MCP_SESSION_STORE_KEY_FILE`. Put it on the `/data` volume, readable only by the server. | None: a restart signs everyone out |
+| `MCP_SESSION_STORE_KEY_FILE` | A file holding the key for `MCP_SESSION_STORE_FILE`: 32 random bytes, as base64 or hex. | None |
 
 ## Logging
 

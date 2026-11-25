@@ -36,21 +36,23 @@ Check that you have:
 
 | Tag | Size | What It Includes |
 | --- | --- | --- |
-| `1.2.0-slim` | about 350 MB | Every tool except the page inspection tools, which show as unavailable. |
-| `1.2.0-full` | about 1.2 GB | Also `inspect_page` and `take_screenshot`, with a headless Chromium. |
+| `1.3.0-slim` | about 350 MB | Every tool except the page inspection tools, which show as unavailable. |
+| `1.3.0-full` | about 1.2 GB | Also `inspect_page` and `take_screenshot`, with a headless Chromium. |
 
 Both run on `linux/amd64` and `linux/arm64`, as a non-root user, write only to `/data`, and contain no credentials. The package is public:
 
 ```bash
-docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.2.0-slim
+docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim
 ```
+
+Each release also moves the tags `1-slim` and `1-full` to itself, so they always point at the newest 1.x release. To get new releases automatically, use them as in [Updating Automatically](upgrading-and-removing.html#updating-automatically).
 
 To pin an exact build, use its digest:
 
 | Tag | Digest |
 | --- | --- |
-| `1.2.0-slim` | `sha256:7c632d153e69e9da39b5aa2e3994d1fd262bcc636bbba773c4490af97c28ff2b` |
-| `1.2.0-full` | `sha256:70215db8fdecb58fb4b9ab138ee37d5ae546ed3f369061e1a0b91f965f5dcfb8` |
+| `1.3.0-slim` | `sha256:f34ec6b4a12b150d180b5defef3cb69cb4e9acd8bfebbeca20373418d53034a0` |
+| `1.3.0-full` | `sha256:a12dfd39c352a83daf8874fdd9d64f4dee344a70f03bbb3e8438c905b17835b8` |
 
 ## Steps
 

@@ -63,7 +63,7 @@ The server's container joins Liferay's network (`--network container:liferay`), 
       -e MCP_PUBLIC_URL=https://mcp.example.com \
       -e MCP_TRUST_PROXY=private \
       -e MCP_HTTP_API_KEYS_FILE=/run/mcp-secrets/api-keys \
-      ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.2.0-slim --http
+      ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim --http
     ```
 
     Create `/srv/liferay-mcp/secrets/api-keys` first, as in [Give Services API Keys](http.html#step-2-give-services-api-keys). The server is reachable at `127.0.0.1:3333` on the Docker host, through the port Liferay's container publishes. Put your HTTPS reverse proxy for `https://mcp.example.com` in front of it, and follow [For Services and People](http.html) for API keys and sign-in.
@@ -76,7 +76,7 @@ The server's container joins Liferay's network (`--network container:liferay`), 
       -e LIFERAY_URL=http://localhost:8080 \
       -e LIFERAY_ROUTES_CLIENT_EXTENSION=/opt/liferay/routes/default/liferay-mcp-oauth \
       -e LIFERAY_DEFAULT_SITE=my-site \
-      ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.2.0-slim
+      ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim
     ```
 
 - **On another computer:** copy the credentials out with `docker cp liferay:/opt/liferay/routes/default/liferay-mcp-oauth .`, give them to the person securely, and set `LIFERAY_URL` to your Liferay's address.

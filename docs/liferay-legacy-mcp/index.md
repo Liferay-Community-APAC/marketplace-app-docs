@@ -47,6 +47,8 @@ In the Claude desktop app, the server's tools show under its name, and you choos
 
 | Liferay Legacy MCP | Liferay DXP |
 | --- | --- |
+| 1.3.0 | 2024.Q1 to 2026.Q2, tested on the latest update of each quarter. |
+| 1.3.0 | 7.4 U1–U92: U92 tested, with OAuth 2 or a password; U1 to U91 with a [password connection](reference/compatibility.html#74-update-releases-before-u92) instead of OAuth 2. |
 | 1.2.0 | 2024.Q1 to 2026.Q2, tested on the latest update of each quarter. |
 | 1.2.0 | 7.4 U1–U92: U92 tested, with OAuth 2 or a password; U1 to U91 with a [password connection](reference/compatibility.html#74-update-releases-before-u92) instead of OAuth 2. |
 | 1.1.0 | 2024.Q1 to 2025.Q4, tested on the latest update of each quarter. |

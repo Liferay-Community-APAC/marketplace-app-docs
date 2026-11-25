@@ -57,7 +57,7 @@ Choose how people use it:
       -e LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth \
       -e MCP_PUBLIC_URL=https://mcp.example.com \
       -e MCP_HTTP_API_KEYS_FILE=/run/mcp-secrets/api-keys \
-      ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.2.0-slim --http
+      ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim --http
     ```
 
     It listens on `127.0.0.1:3333`. Put your HTTPS reverse proxy for `https://mcp.example.com` in front of it, and follow [For Services and People](http.html) for API keys and sign-in.
