@@ -72,6 +72,9 @@ Deploy the OAuth 2 connection, and get its credentials for the server:
 
 ### 3. Connect the AI Assistant
 
+{: .tip }
+The [Command Builder](command-builder.html) gives you the exact command or settings for your Liferay and your AI assistant, ready to copy.
+
 <div class="doc-cards">
   <a class="card doc" href="claude-code.html"><strong>With Claude Code</strong><span>Add the server with one <code>claude mcp add</code> command, in a terminal.</span></a>
   <a class="card doc" href="claude-desktop.html"><strong>With the Claude Desktop App</strong><span>Use the server in the desktop app's chats and its Code tab.</span></a>
