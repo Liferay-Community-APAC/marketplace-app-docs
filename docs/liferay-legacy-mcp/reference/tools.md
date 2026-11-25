@@ -51,8 +51,8 @@ The assistant uses a dedicated tool first, then the Headless APIs, then JSON web
 
 | Tool | What It Does |
 | --- | --- |
-| `inspect_page` | A page's outline, links, missing image descriptions and errors. `1.2.0-full` image only. |
-| `take_screenshot` | A screenshot of a page. `1.2.0-full` image only. |
+| `inspect_page` | A page's outline, links, missing image descriptions and errors. `1.3.0-full` image only. |
+| `take_screenshot` | A screenshot of a page. `1.3.0-full` image only. |
 
 ## Site Building (Administrator Connection)
 

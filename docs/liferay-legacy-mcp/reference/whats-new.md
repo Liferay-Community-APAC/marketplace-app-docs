@@ -10,6 +10,14 @@ nav_order: 6
 1. TOC
 {:toc}
 
+## 1.3.0
+
+- **New version notice:** the server says, in `get_server_info` and its log, when a newer version is published. See [Knowing When There's a New Version](../installing/upgrading-and-removing.html#knowing-when-theres-a-new-version). `MCP_UPDATE_CHECK=false` turns it off.
+- **Automatic updates, if you want them:** each release also moves the tags `1-slim` and `1-full`, for use with `docker run --pull=always`. See [Updating Automatically](../installing/upgrading-and-removing.html#updating-automatically).
+- **Sign-ins survive a restart:** over HTTPS, with `MCP_SESSION_STORE_FILE` and `MCP_SESSION_STORE_KEY_FILE`, people stay signed in when the server restarts. See [Settings](settings.html#sign-in).
+
+Nothing changes in Liferay when upgrading from 1.2.0.
+
 ## 1.2.0
 
 ### Liferay DXP 2026.Q1 and 2026.Q2

@@ -30,7 +30,7 @@ docker run -d --name liferay-mcp --restart unless-stopped -p 127.0.0.1:3333:3333
   -e MCP_PUBLIC_URL=https://mcp.example.com \
   -e MCP_TRUST_PROXY=private \
   -e MCP_HTTP_API_KEYS_FILE=/run/mcp-secrets/api-keys \
-  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.2.0-slim --http
+  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim --http
 ```
 
 The server refuses to start on an address other than loopback without an `https` public address and at least one way to identify callers: API keys (Step 2) or Liferay sign-in (Step 3).
