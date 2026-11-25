@@ -10,6 +10,15 @@ nav_order: 6
 1. TOC
 {:toc}
 
+## 1.4.0
+
+- **Quick setup:** the image's `setup` command creates the service user, its roles and sites, and the OAuth 2 connection as an administrator, then checks that it works. When the instance's password policy or email verification stops the new user, it says which and prints a fix for that user alone. See [Quick Setup](../installing/quick-setup.html).
+- **Docker Compose:** one file runs `setup`, the AI Hub Legacy Connector's installer and the server. See [With Docker Compose](../installing/quick-setup.html#with-docker-compose).
+- **AI Hub workflows:** an AI Hub agent's workflow can call the server's read-only tools, and write tools as approval links, through the AI Hub Legacy Connector (`MCP_HTTP_TOOL_ROUTES`). Access can also be limited to holders of chosen Liferay roles (`MCP_HTTP_TRUSTED_ISSUER_ROLES`).
+- **Blank settings** in an env file or compose file count as unset, instead of being refused.
+
+Nothing changes in Liferay when upgrading from 1.3.0.
+
 ## 1.3.0
 
 - **New version notice:** the server says, in `get_server_info` and its log, when a newer version is published. See [Knowing When There's a New Version](../installing/upgrading-and-removing.html#knowing-when-theres-a-new-version). `MCP_UPDATE_CHECK=false` turns it off.

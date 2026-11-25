@@ -6,7 +6,7 @@ nav_order: 3
 # Installing
 {: .no_toc }
 
-These pages set up Liferay Legacy MCP 1.2.0 against an existing Liferay DXP: first the Liferay side, then the server for the people or agents who will use it.
+These pages set up Liferay Legacy MCP 1.4.0 against an existing Liferay DXP: first the Liferay side, then the server for the people or agents who will use it.
 
 {: .warning }
 Liferay Legacy MCP is a community app for experimental use, not supported by Liferay. Install it on a test or development copy of your Liferay, not in production.
@@ -36,13 +36,13 @@ Check that you have:
 
 | Tag | Size | What It Includes |
 | --- | --- | --- |
-| `1.3.0-slim` | about 350 MB | Every tool except the page inspection tools, which show as unavailable. |
-| `1.3.0-full` | about 1.2 GB | Also `inspect_page` and `take_screenshot`, with a headless Chromium. |
+| `1.4.0-slim` | about 350 MB | Every tool except the page inspection tools, which show as unavailable. |
+| `1.4.0-full` | about 1.2 GB | Also `inspect_page` and `take_screenshot`, with a headless Chromium. |
 
 Both run on `linux/amd64` and `linux/arm64`, as a non-root user, write only to `/data`, and contain no credentials. The package is public:
 
 ```bash
-docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim
+docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.4.0-slim
 ```
 
 Each release also moves the tags `1-slim` and `1-full` to itself, so they always point at the newest 1.x release. To get new releases automatically, use them as in [Updating Automatically](upgrading-and-removing.html#updating-automatically).
@@ -51,10 +51,13 @@ To pin an exact build, use its digest:
 
 | Tag | Digest |
 | --- | --- |
-| `1.3.0-slim` | `sha256:f34ec6b4a12b150d180b5defef3cb69cb4e9acd8bfebbeca20373418d53034a0` |
-| `1.3.0-full` | `sha256:a12dfd39c352a83daf8874fdd9d64f4dee344a70f03bbb3e8438c905b17835b8` |
+| `1.4.0-slim` | `sha256:4c871ed886d64fa4195e085bd8ec30cfda4a2ffa12a6772d42f2f6aefc93f935` |
+| `1.4.0-full` | `sha256:c878f24e4e3b744ad5a6e73b6e96d8b149a731dacff2abdc4477ca1a3557953c` |
 
 ## Steps
+
+{: .tip }
+On Liferay Self-Hosted, [Quick Setup](quick-setup.html) does steps 1 and 2 in one command, from the image, and checks the connection.
 
 ### 1. Create the Service User
 

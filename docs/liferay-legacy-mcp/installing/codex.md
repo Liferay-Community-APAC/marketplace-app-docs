@@ -20,7 +20,7 @@ You need Docker, Codex, and a copy of the server's credentials on your computer,
 Codex waits 30 seconds for a server to start, and the first start would also download the image. Download it first:
 
 ```bash
-docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim
+docker pull ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.4.0-slim
 ```
 
 ## Step 2: Add the Server
@@ -34,7 +34,7 @@ codex mcp add liferay-legacy -- docker run -i --rm \
   -e LIFERAY_URL=https://liferay.example.com \
   -e LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth \
   -e LIFERAY_DEFAULT_SITE=my-site \
-  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim
+  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.4.0-slim
 ```
 
 Everything after `--` is the command Codex runs to start the server. `~/liferay-mcp/routes` is the folder that holds the `liferay-mcp-oauth` folder.
@@ -51,12 +51,12 @@ args = [
   "-e", "LIFERAY_URL=https://liferay.example.com",
   "-e", "LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth",
   "-e", "LIFERAY_DEFAULT_SITE=my-site",
-  "ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim",
+  "ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.4.0-slim",
 ]
 ```
 
 - In the file, give the routes folder's full path: `~` isn't expanded there.
-- For the page inspection tools, use the `1.3.0-full` image.
+- For the page inspection tools, use the `1.4.0-full` image.
 - `liferay-legacy` is the server's name in Codex. To connect more than one Liferay, add one server for each, named after it, such as `liferay-legacy-prod` and `liferay-legacy-test`.
 - No password goes in these settings: the server reads the OAuth credentials from the routes folder when it starts.
 - If the server still takes too long to start, add `startup_timeout_sec = 60` under `[mcp_servers.liferay-legacy]`.

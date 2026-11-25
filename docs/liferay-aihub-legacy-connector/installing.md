@@ -15,7 +15,7 @@ For DXP 2024.Q1 to 2025.Q4. After installing, connect AI Hub in [Configuration](
 
 ## Before you start: the connector user
 
-Create the connector's service user first. In **Control Panel → Users and Organizations**, add a user with screen name `aihub-connector` and any email (for example `aihub-connector@example.com`) and a long random password nobody keeps. Give it **no roles** — remove any Liferay added by default other than User.
+With an administrator's login, the installer creates this user for you ([In one command](#in-one-command-2110-and-later)). Otherwise, create the connector's service user first. In **Control Panel → Users and Organizations**, add a user with screen name `aihub-connector` and any email (for example `aihub-connector@example.com`) and a long random password nobody keeps. Give it **no roles** — remove any Liferay added by default other than User.
 
 The OAuth client extension names this user as its application's user. Nothing ever acts *as* it: the module issues user tokens with `LocalOAuthClient` and never uses the client-credentials grant (a client-credentials request with the application's own credentials is refused). So the user is an identity for the OAuth application, not an account with access.
 
@@ -26,22 +26,48 @@ The OAuth client extension names this user as its application's user. Nothing ev
 
 The installer image holds the module for all eight releases and its client extensions, and writes them into a Liferay deploy folder you mount. It is a public package on GitHub Container Registry — [`liferay-aihub-legacy-connector`](https://github.com/orgs/Liferay-Community-APAC/packages/container/package/liferay-aihub-legacy-connector) — so it pulls without authentication.
 
-Create the `aihub-connector` user first (above), then:
+### In one command (2.11.0 and later)
+
+With Liferay's `deploy` and `osgi/configs` folders mounted, an administrator's login, and the OAuth application on AI Hub for this Liferay, `install` does everything: it creates the `aihub-connector` user (no roles, a random password nobody keeps) before the client extension that needs it, writes the module and the client extension, writes the AI Hub Tokens configuration for the instance (readable by Liferay only), and turns on AI Hub Chat:
+
+```bash
+docker run --rm \
+  -v /path/to/liferay/deploy:/deploy \
+  -v /path/to/liferay/osgi/configs:/configs \
+  -v /path/to/aihub-client-secret:/run/secrets/aihub:ro \
+  -e LIFERAY_RELEASE=2025.q1 \
+  -e LIFERAY_URL=https://liferay.example.com \
+  -e LIFERAY_ADMIN_USERNAME=admin@example.com -e LIFERAY_ADMIN_PASSWORD \
+  -e AIHUB_URL=https://ai.hub.liferay.com \
+  -e AIHUB_CLIENT_ID=<client ID> \
+  -e AIHUB_CLIENT_SECRET_FILE=/run/secrets/aihub \
+  -e AIHUB_CHATBOT_ERC=<chatbot external reference code> \
+  ghcr.io/liferay-community-apac/liferay-aihub-legacy-connector:2.11.0 install
+```
+
+- `-e LIFERAY_ADMIN_PASSWORD` without a value takes the password from your shell; the installer uses it for this run only.
+- Leave out `AIHUB_CHATBOT_ERC` to turn the chat on yourself, in **Instance Settings → AI Hub → AI Hub Chat**.
+- Optional: `MCP_SERVER_URL` and `MCP_SERVER_TOOLS` (comma-separated) for AI Hub workflows calling the Liferay Legacy MCP server's tools; `LIFERAY_API_URL` if the installer reaches Liferay at another address than `LIFERAY_URL`; `COMPANY_ID` instead of reading it from Liferay.
+- Run it again at any time, or with a newer image to upgrade: it finds the user already there.
+
+### Files only
+
+Without the administrator and the AI Hub settings, it writes the module and the client extension only. Create the `aihub-connector` user first (above), then:
 
 ```bash
 docker run --rm \
   -v /path/to/liferay/deploy:/deploy \
   -e LIFERAY_RELEASE=2025.q1 \
   -e LIFERAY_URL=https://liferay.example.com \
-  ghcr.io/liferay-community-apac/liferay-aihub-legacy-connector:latest install
+  ghcr.io/liferay-community-apac/liferay-aihub-legacy-connector:2.11.0 install
 ```
 
-This writes the module jar and the `liferay-aihub-legacy-token` client extension into the deploy folder; Liferay installs them from there (module **Active**, the OAuth application created with its two read scopes). For the broader cell scopes, add `-e CELL_SCOPES=true` to also write `liferay-aihub-legacy-token-cell` (see [Configuration → The cell's scopes](configuration.html#the-cells-scopes-optional)).
+This writes the module jar and the `liferay-aihub-legacy-token` client extension into the deploy folder; Liferay installs them from there (module **Active**, the OAuth application created with its two read scopes). For the broader cell scopes, add `-e CELL_SCOPES=true` to also write `liferay-aihub-legacy-token-cell` (see [Configuration → The cell's scopes](configuration.html#the-cells-scopes-optional)). Then [configure it](configuration.html).
 
 Print the configuration template with:
 
 ```bash
-docker run --rm ghcr.io/liferay-community-apac/liferay-aihub-legacy-connector:2.9.1 config
+docker run --rm ghcr.io/liferay-community-apac/liferay-aihub-legacy-connector:2.11.0 config
 ```
 
 The installer validates its inputs: missing variables, an unknown release, a non-`http(s)` URL and a missing `/deploy` mount each stop it with a message.
@@ -84,6 +110,7 @@ Then:
 ## Upgrade and remove
 
 - **Upgrade (by hand):** uninstall the bundle first (Gogo `lb aihub.legacy`, then `uninstall <id>`), delete its file from `osgi/modules`, and copy the new one in. The installer image upgrades in place — installing a newer image over a running one replaces the jar under the same name and Liferay updates the same bundle.
+- **Know when to upgrade:** turn on **System Settings → AI Hub → Update Check (Legacy Connector)** (2.11.0 and later). Once a day it reads the latest version from this site, and when a newer one is out it writes it in the log and shows instance administrators a notice in Instance and System Settings. It sends nothing about your server, and never downloads or installs anything.
 - **Remove:** uninstall the bundle and delete its file, delete the `.config` file, and undeploy the `liferay-aihub-legacy-token` client extension (and `-cell`, if deployed). The AI Hub Chat settings stay in the database but do nothing without the bundle.
 
 {: .note }

@@ -35,7 +35,7 @@ You need Docker, the Claude desktop app, and a copy of the server's credentials 
             "-e", "LIFERAY_URL=https://liferay.example.com",
             "-e", "LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth",
             "-e", "LIFERAY_DEFAULT_SITE=my-site",
-            "ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim"
+            "ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.4.0-slim"
           ]
         }
       }
@@ -75,7 +75,7 @@ claude mcp add -s user liferay-legacy -- docker run -i --rm \
   -e LIFERAY_URL=https://liferay.example.com \
   -e LIFERAY_ROUTES_CLIENT_EXTENSION=/run/liferay-routes/liferay-mcp-oauth \
   -e LIFERAY_DEFAULT_SITE=my-site \
-  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.3.0-slim
+  ghcr.io/liferay-community-apac/liferay-legacy-mcp:1.4.0-slim
 ```
 
 Then start a new Code session, and type `/mcp`: it lists **liferay-legacy** once the app could start it. Sessions that were already open don't pick it up.
