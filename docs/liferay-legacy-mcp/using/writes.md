@@ -32,6 +32,8 @@ For example, Claude Code asked for a draft article shows what it would create, a
 
 ![Claude Code showing the preview of a draft article, Q4 Webinar, with its summary and body, saying nothing has been created yet, and asking whether to create it.](../assets/images/claude-code-write-preview.png){: .screenshot }
 
+Over HTTPS, nobody may be watching the assistant, so it can't confirm its own changes there. With approval links (1.5.0 and later for signed-in people), the preview comes with a link instead: the person who asked approves it on a page of the server, signed in to Liferay, and the change is made as them. See [Step 4](../installing/http.html#step-4-let-signed-in-people-make-changes-optional).
+
 A confirmation works once, and only for that exact change. If the item was edited in the meantime, or the server restarted, it no longer works, and the assistant asks for a fresh preview.
 
 ## Publishing and Review

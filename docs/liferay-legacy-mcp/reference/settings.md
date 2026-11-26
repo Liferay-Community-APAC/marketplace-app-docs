@@ -92,6 +92,16 @@ For people who sign in with Liferay over HTTPS.
 | `MCP_SESSION_STORE_FILE` | A file to keep people's sign-ins in, so a restart doesn't sign everyone out. Encrypted with the key in `MCP_SESSION_STORE_KEY_FILE`. Put it on the `/data` volume, readable only by the server. | None: a restart signs everyone out |
 | `MCP_SESSION_STORE_KEY_FILE` | A file holding the key for `MCP_SESSION_STORE_FILE`: 32 random bytes, as base64 or hex. | None |
 
+## Approval Links
+
+For changes asked for over HTTPS, approved by the person on the server's page (1.5.0 and later for people who sign in with Liferay).
+
+| Setting | Meaning | Default |
+| --- | --- | --- |
+| `MCP_HTTP_APPROVALS` | `true`: changes by signed-in people and AI Hub users return a link the person approves. Needs `MCP_WRITE_MODE=confirm`, the approvals application, and sign-in or AI Hub's trusted issuer. | `false` |
+| `LIFERAY_APPROVAL_CLIENT_ID` | The approvals OAuth 2 application's client ID. It must differ from the sign-in application. | None |
+| `LIFERAY_APPROVAL_CLIENT_SECRET_FILE` | A file holding its client secret. | None |
+
 ## Logging
 
 | Setting | Meaning | Default |

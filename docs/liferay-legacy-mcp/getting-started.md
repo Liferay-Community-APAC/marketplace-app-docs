@@ -28,6 +28,21 @@ An AI assistant then reaches the server in one of two ways:
 | One person, in Claude Code, the Claude desktop app, GitHub Copilot, Codex, or another AI assistant | The assistant starts the server on their computer (stdio) | [With Claude Code](installing/claude-code.html), [With the Claude Desktop App](installing/claude-desktop.html), [With GitHub Copilot](installing/copilot.html), [With Codex](installing/codex.html), [Other AI Assistants](installing/stdio.html) |
 | Services, and people who sign in with Liferay | Over HTTPS, with API keys or Liferay sign-in | [For Services and People](installing/http.html) |
 
+### Who Liferay Sees
+
+The service user is one shared Liferay account: whatever it may do, everyone using the server through it may do, and Liferay names it, not the person, on what changes. People who sign in over HTTPS are themselves instead:
+
+| Who | Liferay sees | Changes |
+| --- | --- | --- |
+| People signed in with Liferay, over HTTPS | **The person**, with their own permissions | By approval link, made as them (1.5.0 and later) |
+| AI Hub users | The service user, for reads | By approval link, made as them |
+| Services with API keys | The service user | Off, unless you turn them on for a job you trust |
+| One person, on their computer (stdio) | The service user | Previewed, then confirmed in the chat |
+
+- **For people, prefer signing in over HTTPS.** Liferay then applies each person's permissions, and nobody can do more through the server than in Liferay itself.
+- **Keep the service user narrow:** only the sites and roles that everyone using it may have. With approval links, its connection can also be read-only (1.5.0 and later): approved changes are made with the approver's own Liferay sign-in, never through it.
+- **On Liferay DXP 2026.Q3 and later,** consider Liferay's own MCP server, at `/o/mcp`, which acts as each user without a service user. On 2026.Q1 and 2026.Q2 it's a beta behind a feature flag. This server is for the releases before it.
+
 ## Try It
 
 The quickest way to see it work is one person, with a desktop AI assistant, on a test copy of your Liferay:

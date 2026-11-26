@@ -10,6 +10,12 @@ nav_order: 6
 1. TOC
 {:toc}
 
+## 1.5.0 (not yet released)
+
+- **Signed-in people can make changes:** over HTTPS, with approval links on, a change a signed-in person asks for returns a link; they approve it on the server's page, and it's made as them, with their own Liferay permissions. See [Let Signed-In People Make Changes](../installing/http.html#step-4-let-signed-in-people-make-changes-optional).
+- **A read-only service user is enough with approval links:** approved changes don't use the server's own connection, so its client extension can have read scopes only.
+- **`get_server_info`** names who calls are made as, `liferayUser`: the service user, or the signed-in person. `serviceUser` is only there when it is the service user.
+
 ## 1.4.0
 
 - **Quick setup:** the image's `setup` command creates the service user, its roles and sites, and the OAuth 2 connection as an administrator, then checks that it works. When the instance's password policy or email verification stops the new user, it says which and prints a fix for that user alone. See [Quick Setup](../installing/quick-setup.html).
