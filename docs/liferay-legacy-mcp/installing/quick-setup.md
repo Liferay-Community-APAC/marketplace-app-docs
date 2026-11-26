@@ -11,7 +11,7 @@ One command, as a Liferay administrator, does steps 1 and 2 of [Installing](inde
 {: .fs-5 .fw-300 }
 
 {: .note }
-Quick Setup is for Liferay Self-Hosted, where you can reach Liferay's folders. On Liferay PaaS, or to see and do each piece yourself, follow the [step-by-step pages](index.html#steps) instead. Each step below links to the one it replaces.
+Quick Setup is for Liferay Self-Hosted, where you can reach Liferay's folders. On Liferay PaaS, see [Quick Setup on PaaS](paas.html#quick-setup-on-paas): `setup` does the same, except the client extension, which you add to your project. To see and do each piece yourself, follow the [step-by-step pages](index.html#steps). Each step below links to the one it replaces.
 
 1. TOC
 {:toc}
@@ -126,7 +126,7 @@ The other way, as in [Step 2](liferay-setup.html#step-2-verify-its-email-address
 
 ## Without Liferay's Folders
 
-Where you can't mount Liferay's `deploy` and `routes` folders, leave out those two mounts, and `setup` does the rest in two runs:
+Where you can't mount Liferay's `deploy` and `routes` folders, leave out those two mounts, and `setup` does the rest in two runs (on Liferay PaaS, follow [Quick Setup on PaaS](paas.html#quick-setup-on-paas) instead):
 
 1. Run `setup`. It writes `liferay-mcp-oauth.zip` to `/srv/liferay-mcp` and asks you to deploy it.
 1. Deploy the zip the way your Liferay deploys client extensions.

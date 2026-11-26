@@ -9,11 +9,61 @@ nav_order: 4
 
 On Liferay PaaS, you add the OAuth 2 client extension to your PaaS project's repository, and deploy it with the rest of the project. The server then runs outside Liferay Cloud, on each person's computer or on a server of yours, with the application's credentials copied from Liferay.
 
+Two ways through: [Quick Setup on PaaS](#quick-setup-on-paas) has the `setup` command create the service user and write the credentials, and you only add the client extension; or do every piece by hand, with [Creating the Service User](liferay-setup.html) and then [Step 1](#step-1-prepare-the-project) onward.
+
 {: .warning }
 These steps haven't been run on a Liferay PaaS environment yet. They were checked with a PaaS project's Liferay Workspace locally, as described [below](#how-this-was-checked). Running the server as a service inside Liferay Cloud isn't covered.
 
 1. TOC
 {:toc}
+
+## Quick Setup on PaaS
+
+The image's [`setup` command](quick-setup.html) can't reach Liferay's folders on Liferay Cloud, so it can't deploy the client extension or read its credentials. It still does the rest, from your computer: the service user, its roles and sites, the server's routes folder, and a check that the connection works. You add the client extension to the project, as in [Step 2](#step-2-add-the-client-extension), between two runs.
+
+You need Docker on your computer, an administrator's email and password for the environment, and the sites the server works in.
+
+1. **Make a folder for the server's credentials**, and read the administrator's password into your shell, so it isn't in the command:
+
+    ```bash
+    mkdir -p ~/liferay-mcp
+    read -rs LIFERAY_ADMIN_PASSWORD && export LIFERAY_ADMIN_PASSWORD
+    ```
+
+    On Linux, the container runs as user ID 1000: if that isn't you, also run `sudo chown 1000:1000 ~/liferay-mcp`.
+
+1. **Run `setup` to create the service user**, with your environment's Liferay address:
+
+    ```bash
+    docker run --rm \
+      -v ~/liferay-mcp:/data \
+      -e LIFERAY_URL=https://webserver-myproject-prd.lfr.cloud \
+      -e LIFERAY_ADMIN_USERNAME=admin@example.com \
+      -e LIFERAY_ADMIN_PASSWORD \
+      ghcr.io/liferay-community-apac/liferay-legacy-mcp:1-slim setup --sites my-site
+    ```
+
+    It creates `mcp-service`, its roles and its site memberships, then stops at the client extension: *no deploy folder mounted*. Leave the `liferay-mcp-oauth.zip` it writes. On PaaS, the project builds its own zip.
+
+1. **Add the client extension and deploy it**, as in [Step 1](#step-1-prepare-the-project) and [Step 2](#step-2-add-the-client-extension). The service user exists now, so Liferay can create the application when the build starts.
+
+1. **Copy the credentials.** In *Control Panel* → *Security* → *OAuth 2 Administration* → *Liferay MCP server*, copy the **Client ID**, and save the **Client Secret** alone in a file:
+
+    ```bash
+    read -rs SECRET && printf '%s' "$SECRET" > ~/liferay-mcp/client-secret && unset SECRET
+    ```
+
+1. **Run `setup` again**, the same command with the Client ID and the secret file added at the end:
+
+    ```bash
+    ... setup --sites my-site --client-id <the Client ID> --client-secret-file /data/client-secret
+    ```
+
+    It finds the user, roles and sites already there, writes the routes folder, `~/liferay-mcp/routes`, and checks that the service user connects. If it's refused, run the script it prints, as in [If the Service User Is Refused](quick-setup.html#if-the-service-user-is-refused), and run it again. Then delete `~/liferay-mcp/client-secret`: the routes folder holds the secret now.
+
+1. **Run the server** with that routes folder, as in [Step 4](#step-4-run-the-server).
+
+Use the same `--read-only` option in both runs if you deploy the read-only client extension: `setup` writes the scopes file to match.
 
 ## Step 1: Prepare the Project
 
@@ -34,7 +84,7 @@ When the deploy finishes, *Control Panel* → *Security* → *OAuth 2 Administra
 ## Step 3: Copy the Credentials for the Server
 
 {: .tip }
-The image's `setup` command can write these four files for you, and check the connection: see [Without Liferay's Folders](quick-setup.html#without-liferays-folders). It also creates the service user, its roles and sites, as on [Creating the Service User](liferay-setup.html).
+The image's `setup` command can write these four files for you, and check the connection: see [Quick Setup on PaaS](#quick-setup-on-paas).
 
 The server isn't in Liferay Cloud, so it can't read Liferay's routes. Write them yourself: create a folder named `liferay-mcp-oauth` with these four files, copying the values from the application's page in *OAuth 2 Administration*, where Liferay shows the client extension's **Client ID** and **Client Secret**:
 
