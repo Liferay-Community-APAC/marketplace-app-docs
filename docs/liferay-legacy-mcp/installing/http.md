@@ -7,7 +7,7 @@ nav_order: 10
 # For Services and People (HTTPS)
 {: .no_toc }
 
-Over HTTPS, one server is shared: services call it with API keys, and people sign in with their Liferay account from an AI assistant that connects to remote MCP servers. Signed-in people act as themselves, with their own Liferay permissions, and are read-only.
+Over HTTPS, one server is shared: services call it with API keys, and people sign in with their Liferay account from an AI assistant that connects to remote MCP servers. Signed-in people act as themselves, with their own Liferay permissions. They're read-only, unless you add approval links (1.5.0 and later): then each change they ask for is approved by them on a page, and made as them.
 
 1. TOC
 {:toc}
@@ -96,6 +96,42 @@ Over HTTPS, writes stay off even for `write` keys, unless you also set `MCP_WRIT
     ```
 
 People then add the server to their AI assistant as a remote MCP server at `https://mcp.example.com/mcp`. The first time, they sign in on Liferay's own page, and the server asks them to approve the AI assistant by name.
+
+## Step 4: Let Signed-In People Make Changes (Optional)
+
+Available in 1.5.0 and later. The AI assistant could confirm its own changes over HTTPS, so a person approves each one on a page of the server instead:
+
+1. The assistant asks for a change. The server answers with a preview and a link, and changes nothing.
+1. The person opens the link, signs in to Liferay, sees the change, and clicks **Approve** or **Reject**.
+1. An approved change is made **as that person**, with their own Liferay permissions. Only the person who asked can approve it, as the same Liferay user, within 15 minutes. The assistant can ask how it went.
+
+To turn it on:
+
+1. In *OAuth 2 Administration*, add a second application, separate from the sign-in one:
+
+    | Field | Value |
+    | --- | --- |
+    | Name | `Liferay MCP approvals` |
+    | Website URL | The server's address, for example `https://mcp.example.com` |
+    | Callback URIs | `https://mcp.example.com/approve/callback` |
+    | Client Profile | Web Application |
+    | Allowed Authorization Types | Authorization Code and Refresh Token only |
+    | Trusted Application | Off |
+
+1. On its **Scopes** tab, select: `Liferay.Headless.Delivery.everything`, `Liferay.Headless.Admin.Content.everything`, `Liferay.Headless.Admin.Taxonomy.everything`, `Liferay.Headless.Admin.Workflow.everything`, `Liferay.Headless.Batch.Engine.everything`, `Liferay.Headless.Form.everything`, `Liferay.Headless.Admin.User.everything.read`, `Liferay.Data.Engine.REST.everything.read`, `Liferay.Object.Admin.REST.everything.read` and `liferay-json-web-services.everything.read`. The sign-in application keeps read scopes only, so Liferay itself keeps sign-ins read-only.
+1. Decide who may approve: create a regular role, for example **MCP Approver**, with **View** and **Create Token** on this application, and assign it to the people who may make changes.
+1. Save its client secret in `/srv/liferay-mcp/secrets/approvals-secret`, as in Step 3.
+1. Add to the `docker run` command:
+
+    ```bash
+    -e MCP_WRITE_MODE=confirm \
+    -e MCP_HTTP_APPROVALS=true \
+    -e LIFERAY_APPROVAL_CLIENT_ID=<the application's client ID> \
+    -e LIFERAY_APPROVAL_CLIENT_SECRET_FILE=/run/mcp-secrets/approvals-secret \
+    ```
+
+{: .tip }
+Approved changes don't use the server's own connection, so it can stay read-only: use the read-only client extension, or `setup --read-only`.
 
 ## Related Information
 

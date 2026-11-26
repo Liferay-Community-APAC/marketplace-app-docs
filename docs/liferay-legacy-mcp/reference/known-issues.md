@@ -24,9 +24,9 @@ To turn off a site's review workflow for web content, use *Site Settings* → *W
 
 `create_site`, `create_object`, the design tools, the administration API areas and JSON web services are available only to a person using the server on their own computer.
 
-## People Signed In Over HTTPS Are Read-Only
+## People Signed In Over HTTPS Change Things by Approval Link
 
-People who sign in with Liferay over HTTPS can read, but not write.
+People who sign in with Liferay over HTTPS can read. To change something, they approve each change on a page of the server, from 1.5.0 with approval links on ([Step 4](../installing/http.html#step-4-let-signed-in-people-make-changes-optional)). AI assistants can't yet ask them in the chat instead.
 
 ## A Restart Drops Sign-Ins
 
