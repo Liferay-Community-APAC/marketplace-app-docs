@@ -9,6 +9,9 @@ nav_order: 1
 
 The server acts as one Liferay user, with least privilege. Create it once per Liferay, as an administrator, before you follow the page for where your Liferay runs.
 
+{: .tip }
+On Liferay Self-Hosted, [Quick Setup](quick-setup.html) does this page and the next one in one command, and checks the connection. This page is the same work by hand, and explains what `setup` creates.
+
 1. TOC
 {:toc}
 

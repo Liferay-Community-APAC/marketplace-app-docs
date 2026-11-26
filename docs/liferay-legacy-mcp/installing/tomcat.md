@@ -9,6 +9,9 @@ nav_order: 2
 
 Follow these steps when Liferay is installed from a Tomcat bundle on a server you manage. In the steps below, `<liferay-home>` is the Liferay installation folder, the one that contains the `osgi` and `routes` folders.
 
+{: .tip }
+[Quick Setup](quick-setup.html#liferay-on-a-server-tomcat) does the service user and Steps 1 and 2 in one command, and writes the credentials to `/srv/liferay-mcp/routes`, as Step 2 does. After it, go straight to [Step 3](#step-3-run-the-server).
+
 {: .important }
 You need file access to the Liferay server, the [service user](liferay-setup.html), and Liferay must be running. To run the server on the Liferay machine, you also need Docker there.
 
