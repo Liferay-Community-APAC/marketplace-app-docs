@@ -9,6 +9,9 @@ nav_order: 3
 
 Liferay runs in a container, and the server runs in a second container that shares Liferay's network, so it reaches Liferay at `localhost:8080` as on a server. You copy the OAuth 2 client extension into the running Liferay container.
 
+{: .tip }
+[Quick Setup](quick-setup.html#liferay-in-docker) does the service user and Step 2 in one command, on Liferay's network, once Liferay has the volumes of Step 1 (and one for its `deploy` folder). After it, go straight to [Step 3](#step-3-run-the-server): the credentials are in Liferay's routes volume, as below.
+
 {: .important }
 You need Docker, the [service user](liferay-setup.html), and Liferay must be running. The commands use `liferay` as the name of Liferay's container; use yours.
 

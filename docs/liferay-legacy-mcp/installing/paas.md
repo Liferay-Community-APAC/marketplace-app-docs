@@ -33,6 +33,9 @@ When the deploy finishes, *Control Panel* → *Security* → *OAuth 2 Administra
 
 ## Step 3: Copy the Credentials for the Server
 
+{: .tip }
+The image's `setup` command can write these four files for you, and check the connection: see [Without Liferay's Folders](quick-setup.html#without-liferays-folders). It also creates the service user, its roles and sites, as on [Creating the Service User](liferay-setup.html).
+
 The server isn't in Liferay Cloud, so it can't read Liferay's routes. Write them yourself: create a folder named `liferay-mcp-oauth` with these four files, copying the values from the application's page in *OAuth 2 Administration*, where Liferay shows the client extension's **Client ID** and **Client Secret**:
 
 | File | Content |

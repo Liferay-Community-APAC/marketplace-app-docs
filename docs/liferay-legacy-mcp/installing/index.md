@@ -56,16 +56,22 @@ To pin an exact build, use its digest:
 
 ## Steps
 
-{: .tip }
-On Liferay Self-Hosted, [Quick Setup](quick-setup.html) does steps 1 and 2 in one command, from the image, and checks the connection.
+Steps 1 and 2 set up Liferay, and end with a **routes folder**: the server's OAuth 2 credentials, which step 3 asks for. Do them one of two ways; the result is the same.
+
+<div class="doc-cards">
+  <a class="card doc" href="quick-setup.html"><strong>Quick Setup (one command)</strong><span>Liferay Self-Hosted, Tomcat or Docker: the image's <code>setup</code> command does steps 1 and 2 as an administrator, and checks the connection.</span></a>
+  <a class="card doc" href="#1-create-the-service-user"><strong>Step by Step</strong><span>Any platform, Liferay PaaS included: create each piece yourself, and see what each one is.</span></a>
+</div>
+
+You can switch at any time: `setup` finds what you created by hand, and the pages below explain what `setup` creates.
 
 ### 1. Create the Service User
 
-Follow [Creating the Service User](liferay-setup.html), on every platform.
+Follow [Creating the Service User](liferay-setup.html), on every platform. ([Quick Setup](quick-setup.html) does this for you.)
 
 ### 2. Connect Liferay, Where It Runs
 
-Deploy the OAuth 2 connection, and get its credentials for the server:
+Deploy the OAuth 2 connection, and get its credentials for the server. ([Quick Setup](quick-setup.html) does this for you on Liferay Self-Hosted.)
 
 <div class="doc-cards">
   <a class="card doc" href="tomcat.html"><strong>Liferay Self-Hosted (Tomcat)</strong><span>Copy the client extension zip into Liferay, and run the server on the Liferay machine or people's computers.</span></a>
